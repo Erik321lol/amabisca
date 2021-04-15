@@ -1,0 +1,47 @@
+﻿@model amabisca.Program
+
+@{
+    ViewData["Title"] = "Proveedores";
+}
+
+<h1><u>Proveedores</u></h1>
+
+<style>
+    div.a {
+        text-align: center;
+    }
+    label {
+        display: block;
+        width: 300px;
+    }
+
+    lapso {
+        display: block;
+        float: left;
+    }
+
+    nombre, #cod_provee {
+        display: block;
+        width: 150px;
+        float: right;
+    }
+</style>
+
+<div class="a">
+    <br />
+    <h2> Registro de Proveedores</h2>
+</div>
+<form>
+    <br />
+    <br />
+    <label><span>Coodigo Proveedor </span> <br><input type="text" size="10" name="cod_provee"></label>
+    <label><span>Nombre </span> <br><input type="text" size="30" name="nombre"></label>
+    <label><span>Telefono </span> <br><input type="text" size="10" name="telefono"></label>
+    <label><span>Direccion </span> <br><input type="text" size="30" name="direccion"></label>
+    <label><span>Ciudad </span> <br><input type="text" size="20" name="ciudad"></label>
+    <label><span>Pais </span><br><input type="text" size="30" name="pais"></label>
+    <p align="center"><input type="submit" size="45" value="Registrar" name="enviar"></p align="right">
+
+
+</form>
+
