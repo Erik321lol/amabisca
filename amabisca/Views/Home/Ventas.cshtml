@@ -8,8 +8,43 @@
     div.a {
         text-align: center;
     }
+    
 </style>
 
 <div class="a">
     <h2> Registro de Ventas</h2>
 </div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-5">
+            <p align="right">
+                <input type="image" src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="125" height="125">
+                <label for="factura" class="col-sm-2 control-label">Generar Factura</label>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cod_producto" class="col-sm-2 control-label">Codigo Producto</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cod_producto" placeholder="Codigo Producto">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nombre_producto" class="col-sm-2 control-label">Nombre del Producto</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="nombre_producto" placeholder="Nombre del Producto">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+    </div>
+    
+</form>

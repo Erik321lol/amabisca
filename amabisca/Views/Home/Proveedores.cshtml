@@ -10,20 +10,9 @@
     div.a {
         text-align: center;
     }
-    label {
-        display: block;
-        width: 300px;
-    }
-
-    lapso {
-        display: block;
-        float: left;
-    }
-
-    nombre, #cod_provee {
-        display: block;
-        width: 150px;
-        float: right;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
     }
 </style>
 
@@ -31,17 +20,50 @@
     <br />
     <h2> Registro de Proveedores</h2>
 </div>
-<form>
+
+<form class="form-horizontal">
     <br />
     <br />
-    <label><span>Coodigo Proveedor </span> <br><input type="text" size="10" name="cod_provee"></label>
-    <label><span>Nombre </span> <br><input type="text" size="30" name="nombre"></label>
-    <label><span>Telefono </span> <br><input type="text" size="10" name="telefono"></label>
-    <label><span>Direccion </span> <br><input type="text" size="30" name="direccion"></label>
-    <label><span>Ciudad </span> <br><input type="text" size="20" name="ciudad"></label>
-    <label><span>Pais </span><br><input type="text" size="30" name="pais"></label>
-    <p align="center"><input type="submit" size="45" value="Registrar" name="enviar"></p align="right">
-
-
+    <div class="form-group">
+        <label for="cod_producto" class="col-sm-2 control-label">Coodigo Proveedor</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cod_producto" placeholder="codigo">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nombre_producto" class="col-sm-2 control-label">Nombre</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="nombre_producto" placeholder="nombre">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Telefono</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="# telefono">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Direccion</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="direccion">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Ciudad</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="ciudad">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Pais</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="pais">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+    </div>
 </form>
 
