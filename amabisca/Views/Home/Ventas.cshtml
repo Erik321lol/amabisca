@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Ventas";
+}
+<div style="float: right">
+    <input type="image" src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="100" height="100">
+    <br />
+    <label>Generar Factura</label>
+</div>
+
+<h2><u>Ventas</u></h2>
+
+<div style="text-align: center">
+    <h3>Registro de Ventas</h3>
+</div>
+<br />
+<br />
+
+<form class="form-group">
+
+    <div class="form-group">
+        <label for="cod_producto" class="col-sm-5 control-label">Codigo Producto</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cod_producto" placeholder="Codigo Producto">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nombre_producto" class="col-sm-5 control-label">Nombre del Producto</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="nombre_producto" placeholder="Nombre del Producto">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
+        </div>
+    </div>
+    <br />
+    <br />
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-success">Registrar</button>
+    </div>
+
+</form>

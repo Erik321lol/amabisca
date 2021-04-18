@@ -28,7 +28,12 @@ namespace amabisca.Controllers
             return View();
         }
 
-        public IActionResult registro_clientes()
+        public IActionResult Proveedores()
+        {
+            return View();
+        }
+
+        public IActionResult Ventas()
         {
             return View();
         }
