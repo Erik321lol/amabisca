@@ -28,6 +28,11 @@ namespace amabisca.Controllers
             return View();
         }
 
+        public IActionResult registro_clientes()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
