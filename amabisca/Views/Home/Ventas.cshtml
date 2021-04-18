@@ -2,35 +2,30 @@
 @{
     ViewData["Title"] = "Ventas";
 }
-
-<h1><u>Ventas</u></h1>
-<style>
-    div.a {
-        text-align: center;
-    }
-    
-</style>
-
-<div class="a">
-    <h2> Registro de Ventas</h2>
+<div style="float: right">
+    <input type="image" src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="100" height="100">
+    <br />
+    <label>Generar Factura</label>
 </div>
-<form class="form-horizontal">
+
+<h2><u>Ventas</u></h2>
+
+<div style="text-align: center">
+    <h3>Registro de Ventas</h3>
+</div>
+<br />
+<br />
+
+<form class="form-group">
+
     <div class="form-group">
-        <div class="col-sm-5">
-            <p align="right">
-                <input type="image" src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="125" height="125">
-                <label for="factura" class="col-sm-2 control-label">Generar Factura</label>
-            </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cod_producto" class="col-sm-2 control-label">Codigo Producto</label>
+        <label for="cod_producto" class="col-sm-5 control-label">Codigo Producto</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" id="cod_producto" placeholder="Codigo Producto">
         </div>
     </div>
     <div class="form-group">
-        <label for="nombre_producto" class="col-sm-2 control-label">Nombre del Producto</label>
+        <label for="nombre_producto" class="col-sm-5 control-label">Nombre del Producto</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" id="nombre_producto" placeholder="Nombre del Producto">
         </div>
@@ -41,10 +36,10 @@
             <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Registrar</button>
-        </div>
+    <br />
+    <br />
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-success">Registrar</button>
     </div>
-    
+
 </form>
