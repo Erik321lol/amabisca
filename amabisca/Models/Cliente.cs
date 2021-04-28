@@ -22,7 +22,6 @@ namespace amabisca.Models
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public long Dpi { get; set; }
-
         public virtual ICollection<Ventum> Venta { get; set; }
     }
 }
