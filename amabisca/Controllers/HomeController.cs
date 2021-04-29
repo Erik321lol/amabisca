@@ -77,18 +77,18 @@ namespace amabisca.Controllers
             {
                 contra = ingresar["contraseña"].ToString();
             }
-
+            db_a7311d_dbamabiscaContext.cerrar();
             if (contra.Equals(contrasena))
             {
-                estado = 1;
+                return View("Index");
+
             }
             else
             {
-                estado = 0;
+                return View("Ventas");
             }
-            db_a7311d_dbamabiscaContext.cerrar();
+            
             ViewData["estadoc"] = estado.ToString();
-            return View();
         }
 
         public IActionResult crear_usuario()
@@ -106,6 +106,7 @@ namespace amabisca.Controllers
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

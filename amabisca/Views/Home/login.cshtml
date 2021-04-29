@@ -1,8 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{ 
+    Layout = null;
 }
+
 <html>
 <head>
     <style type="text/css">
@@ -15,15 +14,22 @@
     </style>
 </head>
 <body>
-    <h2><u>Login</u></h2>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1 align="center"><u>Login</u></h1>
 
     <div class="nuevo1">
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="crear_usuario"><img src="~/Imagenes/Logo/agregar.png" alt="Logo" class="logo" width="50" height="50"></a>
-    </div>
-
-    <div style="text-align: center">
-        <br />
-        <h3>Login</h3>
     </div>
 
     <br />
@@ -31,7 +37,7 @@
     <form class="form-horizontal" method="post">
         @ViewData["estadoc"];
         <h1>@ViewData["estadoc"]</h1>
-        <div class="form-group">
+        <div class="form-group" align="center">
             <label for="nombre" class="col-sm-5 control-label">Usuario</label>
             <div class="col-sm-5">
                 <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Usuario" />
@@ -39,7 +45,7 @@
         </div>
         <br />
         <br />
-        <div class="form-group">
+        <div class="form-group" align="center">
             <label for="nombre" class="col-sm-5 control-label">Contrasena</label>
             <div class="col-sm-5">
                 <input type="password" name="contrasena" class="form-control" id="contrasena" placeholder="Contrasena" />
@@ -49,7 +55,7 @@
         <br />
 
         <div style="text-align: center">
-            <button type="submit" class="btn btn-success">Ingresar</button>
+            <button type="submit" class="btn btn-success" align="center">Ingresar</button>
         </div>
     </form>
 </body>
