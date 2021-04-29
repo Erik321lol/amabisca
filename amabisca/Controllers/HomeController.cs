@@ -69,7 +69,7 @@ namespace amabisca.Controllers
         public IActionResult login(String usuario, String contrasena)
         {
             String contra = "";
-            int estado = 0;
+            String tipo = "";
             db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons = new SqlCommand("Select contraseña from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar = cons.ExecuteReader(); 
@@ -78,17 +78,38 @@ namespace amabisca.Controllers
                 contra = ingresar["contraseña"].ToString();
             }
             db_a7311d_dbamabiscaContext.cerrar();
+
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons1 = new SqlCommand("Select cod_rol_usuario from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar1 = cons1.ExecuteReader();
+            while (ingresar1.Read())
+            {
+                tipo = ingresar1["cod_rol_usuario"].ToString();
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+
+
             if (contra.Equals(contrasena))
             {
+                if (tipo.Equals("1"))
+                {
+                    return View("Index");
+                }
+                else if (tipo.Equals("2"))
+                {
+                    return View("Index");
+                }
+                else if (tipo.Equals("3"))
+                {
+                    return View("Index");
+                }
                 return View("Index");
 
             }
             else
             {
-                return View("Ventas");
+                return View("login");
             }
-            
-            ViewData["estadoc"] = estado.ToString();
         }
 
         public IActionResult crear_usuario()
