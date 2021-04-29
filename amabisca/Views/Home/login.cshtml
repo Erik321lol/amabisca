@@ -28,8 +28,9 @@
 
     <br />
 
-    <form class="form-horizontal">
-
+    <form class="form-horizontal" method="post">
+        @ViewData["estadoc"];
+        <h1>@ViewData["estadoc"]</h1>
         <div class="form-group">
             <label for="nombre" class="col-sm-5 control-label">Usuario</label>
             <div class="col-sm-5">

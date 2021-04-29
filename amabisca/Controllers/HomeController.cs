@@ -28,14 +28,14 @@ namespace amabisca.Controllers
             //db_a7311d_dbamabiscaContext.cerrar();
             
             //consultar
-            db_a7311d_dbamabiscaContext.abrir();
+            /*db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons = new SqlCommand("Select * from Cliente", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar = cons.ExecuteReader();
             while (ingresar.Read())
             { 
                 ViewData["nombre"] = ingresar["Nombre1"].ToString();
             } 
-            db_a7311d_dbamabiscaContext.cerrar();
+            db_a7311d_dbamabiscaContext.cerrar();*/
 
             return View();
         }
@@ -65,6 +65,32 @@ namespace amabisca.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult login(String usuario, String contrasena)
+        {
+            String contra = "";
+            int estado = 0;
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Select contraseña from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar = cons.ExecuteReader(); 
+            while (ingresar.Read())
+            {
+                contra = ingresar["contraseña"].ToString();
+            }
+
+            if (contra.Equals(contrasena))
+            {
+                estado = 1;
+            }
+            else
+            {
+                estado = 0;
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            ViewData["estadoc"] = estado.ToString();
+            return View();
+        }
+
         public IActionResult crear_usuario()
         {
             return View();
@@ -85,13 +111,27 @@ namespace amabisca.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-
         [HttpPost]
-        public ActionResult crear_usuario(String nombre)
+        public ActionResult crear_usuario(String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String dpi, String usuario, String contrasena, String tipousuario)
         {
-            ViewBag.Marca = nombre;
+            int tipo = 0;
+            if (tipousuario.Equals("Administrador"))
+            {
+                tipo = 1;
+            }else if (tipousuario.Equals("Coordinador"))
+            {
+                tipo = 2;
+            }
+            else if (tipousuario.Equals("Usuario basico"))
+            {
+                tipo = 3;
+            }
+            //agregar,editar,eliminar
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + Int32.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ")", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
             return View();
-        }
+        }       
     }
 }
