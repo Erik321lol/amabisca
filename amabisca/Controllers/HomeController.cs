@@ -53,11 +53,11 @@ namespace amabisca.Controllers
         }
 
         [HttpPost]
-        public ActionResult Proveedores(String cod_proveedor, String nombre, String telefono, String direccion, String ciudad, String pais)
+        public ActionResult Proveedores( String nombre, String telefono, String direccion, String ciudad, String pais)
         {
             //agregar,editar,eliminar
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into proveedor values ('" + int.Parse(cod_proveedor) + "', '" + nombre + "', '" + direccion + "', '" + int.Parse(telefono) + "', '" + pais + "', " + ciudad + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into proveedor(nombre, direccion, telefono, pais, ciudad) values ('" + nombre + "', '" + direccion + "', '" + telefono + "', '" + pais + "', '" + ciudad + "')", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
             return View();
