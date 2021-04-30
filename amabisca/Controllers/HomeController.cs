@@ -42,15 +42,44 @@ namespace amabisca.Controllers
 
         public IActionResult Privacy()
         {
+         
             return View();
         }
 
         public IActionResult Proveedores()
         {
+        
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Proveedores( String nombre, String telefono, String direccion, String ciudad, String pais)
+        {
+            //agregar,editar,eliminar
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into proveedor(nombre, direccion, telefono, pais, ciudad) values ('" + nombre + "', '" + direccion + "', '" + telefono + "', '" + pais + "', '" + ciudad + "')", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
             return View();
         }
 
         public IActionResult Ventas()
+        {
+            return View();
+        }
+
+        /*   [HttpPost]
+           public ActionResult Ventas(String cod_producto, String nombre, String cantidad)
+            {
+         agregar,editar,eliminar
+             db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into proveedor values ('" + int.Parse(cod_producto) + "', '" + nombre + "', '" + int.Parse(cantidad) + ")", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
+                return View();
+          }*/
+
+        public IActionResult Factura()
         {
             return View();
         }
@@ -150,7 +179,7 @@ namespace amabisca.Controllers
             }
             //agregar,editar,eliminar
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + Int32.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
             return View();
