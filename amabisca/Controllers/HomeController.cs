@@ -89,9 +89,13 @@ namespace amabisca.Controllers
             return View();
         }
 
-        public IActionResult Registro_clientes()
+        public IActionResult Registro_clientes(String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String nit, String telefono, String direccion, String dpi)
         {
-
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into cliente(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, nit, telefono, direccion, dpi) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "','" + nit + "', '" + telefono + "', '" + direccion + "', " + Int32.Parse(dpi) + ")", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View();
         }
 
 
