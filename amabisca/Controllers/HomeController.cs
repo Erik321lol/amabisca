@@ -89,6 +89,12 @@ namespace amabisca.Controllers
             return View();
         }
 
+        public IActionResult Registro_clientes()
+        {
+
+        }
+
+
         public IActionResult login()
         {
             return View();
