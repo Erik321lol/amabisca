@@ -9,67 +9,86 @@
 
     <div style="text-align: center">
         <br />
-        <h3>Registro de Productos</h3>
+        <h3>Información de Productos</h3>
     </div>
 
     <br />
     <form class="form-horizontal">
 
         <div class="form-group">
-            <label for="nombre" class="col-sm-5 control-label">Codigo Producto</label>
-            <div class="col-sm-5">
-                <input type="text" name="Codigo Producto" class="form-control" id="Codigo Producto" placeholder="Codigo Producto" />
-            </div>
-        </div>
-        <div class="form-group">
             <label for="Nombre del Producto" class="col-sm-5 control-label">Nombre del Producto</label>
             <div class="col-sm-5">
-                <input type="text" name="Nombre del Producto" class="form-control" id="Nombre del Producto" placeholder="Nombre del Producto" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Proveedor" class="col-sm-5 control-label">Proveedor</label>
-            <div class="col-sm-5">
-                <input type="text" name="Proveedor" class="form-control" id="Proveedor" placeholder="Proveedor" />
+                <input type="text" name="nombre_producto" class="form-control" id="Nombre del Producto" placeholder="Nombre del Producto" />
             </div>
         </div>
         <div class="form-group">
             <label for="Estado" class="col-sm-5 control-label">Estado</label>
             <div class="col-sm-5">
-                <input type="text" name="Estado" class="form-control" id="Estado" placeholder="Estado" />
+                <input type="text" name="estado" class="form-control" id="Estado" placeholder="Estado" />
             </div>
         </div>
         <div class="form-group">
             <label for="Marca" class="col-sm-5 control-label">Marca</label>
             <div class="col-sm-5">
-                <input type="text" name="Marca" class="form-control" id="Marca" placeholder="Marca" />
+                <input type="text" name="marca" class="form-control" id="Marca" placeholder="Marca" />
             </div>
         </div>
         <div class="form-group">
             <label for="Precio" class="col-sm-5 control-label">Precio</label>
             <div class="col-sm-5">
-                <input type="text" name="Precio" class="form-control" id="Precio" placeholder="Precio" />
+                <input type="text" name="precio" class="form-control" id="Precio" placeholder="Precio" />
             </div>
         </div>
         <div class="form-group">
             <label for="Medidas" class="col-sm-5 control-label">Medidas</label>
             <div class="col-sm-5">
-                <input type="text" name="Medidas" class="form-control" id="Medidas" placeholder="Medidas" />
+                <input type="text" name="medida" class="form-control" id="Medidas" placeholder="Medidas" />
             </div>
+        </div>
             <div class="form-group">
                 <label for="Cantidad" class="col-sm-5 control-label">Cantidad</label>
                 <div class="col-sm-5">
-                    <input type="text" name="Cantidad" class="form-control" id="Cantidad" placeholder="Cantidad" />
+                    <input type="text" name="cantidad" class="form-control" id="Cantidad" placeholder="Cantidad" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="Tipo Vehiculo" class="col-sm-5 control-label">Tipo Vehiculo</label>
+                <label for="Proveedor" class="col-sm-5 control-label">Proveedor</label>
                 <div class="col-sm-5">
-                    <input type="text" name="Tipo Vehiculo" class="form-control" id="Tipo Vehiculo" placeholder="Tipo Vehiculo" />
+                    <input type="text" name="proveedor" class="form-control" id="Proveedor" placeholder="Proveedor" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="vehiculo" class="col-sm-5 control-label">Tipo de Vehiculo</label>
+                <div class="col-sm-5">
+                    <select name="tipovehiculo" id="Tipo">
+                        <option>Ligero</option>
+                        <option>Pesado</option>
+                        <option>Agricola</option>
+                        <option>Motocicleta</option>
+                    </select>
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="medida" class="col-sm-5 control-label">Unidad de Medida</label>
+                <div class="col-sm-5">
+                    <select name="unidadmedida" id="Tipo">
+                        <option>Metro</option>
+                        <option>Centimetro</option>
+                        <option>Milimetro</option>
+                        <option>Litro</option>
+                        <option>Diametro</option>
+                        <option>Altura</option>
+                        <option>Ancho</option>
+                        <option>Espesor</option>
+                        <option>Peso</option>
+                        <option>Rosca</option>
+                    </select>
+                </div>
             </div>
+
+
+        
             <br />
             <div style="text-align: center">
                 <button type="submit" class="btn btn-success">Registrar</button>
