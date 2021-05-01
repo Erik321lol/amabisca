@@ -161,6 +161,49 @@ namespace amabisca.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Productos(String nombre_producto, String estado, String marca, String precio, String medida, String cantidad, String proveedor, String tipovehiculo, String unidadmedida)
+        {
+
+            int tipo = 0;
+            if (tipovehiculo.Equals("Ligero"))
+            {
+                tipo = 1;
+            }
+            else if (tipovehiculo.Equals("Pesado"))
+            {
+                tipo = 2;
+            }
+            else if (tipovehiculo.Equals("Agricola"))
+            {
+                tipo = 3;
+            }
+            else if (tipovehiculo.Equals("Motocicleta"))
+            {
+                tipo = 4;
+            }
+
+            int unidad = 0;
+            {
+                if (unidadmedida.Equals("Metro"))
+                {
+                    unidad= 1;
+                }
+                else if (unidadmedida.Equals("Centimetro"))
+                {
+                    unidad = 2;
+                }
+            }
+
+            //agregar,editar,eliminar
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ", "+unidad+")", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View();
+
+            
+        }
 
         public IActionResult Inventario()
         {
