@@ -164,6 +164,7 @@ namespace amabisca.Controllers
         [HttpPost]
         public IActionResult Productos(String nombre_producto, String estado, String marca, String precio, String medida, String cantidad, String proveedor, String tipovehiculo, String unidadmedida)
         {
+            String cod_proveedor = "";
 
             int tipo = 0;
             if (tipovehiculo.Equals("Ligero"))
@@ -193,16 +194,54 @@ namespace amabisca.Controllers
                 {
                     unidad = 2;
                 }
+                else if (unidadmedida.Equals("Milimetro"))
+                {
+                    unidad = 3;
+                }
+                else if (unidadmedida.Equals("Litro"))
+                {
+                    unidad = 4;
+                }
+                else if (unidadmedida.Equals("Diametro"))
+                {
+                    unidad = 5;
+                }
+                else if (unidadmedida.Equals("Altura"))
+                {
+                    unidad = 6;
+                }
+                else if (unidadmedida.Equals("Ancho"))
+                {
+                    unidad = 7;
+                }
+                else if (unidadmedida.Equals("Espesor"))
+                {
+                    unidad = 8;
+                }
+                else if (unidadmedida.Equals("Peso"))
+                {
+                    unidad = 9;
+                }
+                else if (unidadmedida.Equals("Rosca"))
+                {
+                    unidad = 10;
+                }
             }
-
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons1 = new SqlCommand("Select cod_proveedor from proveedor where nombre= '" + proveedor + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar1 = cons1.ExecuteReader();
+            while (ingresar1.Read())
+            {
+                cod_proveedor = ingresar1["cod_proveedor"].ToString();
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
             //agregar,editar,eliminar
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ", "+unidad+")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, estado, marca, precio, medida, cantidad, cod_proveedor, cod_tipo_vehiculo, cod_unidad_medida) values ('" + nombre_producto + "', '" + estado + "', '" + marca + "', " + float.Parse(precio)+ ", '" + medida + "', " + int.Parse(cantidad) + ", "+ cod_proveedor +", " + tipo + ", " + unidad + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
             return View();
 
-            
         }
 
         public IActionResult Inventario()
