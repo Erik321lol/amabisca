@@ -304,6 +304,21 @@ namespace amabisca.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Inventario( String tipoinventario)
+        {
+                db_a7311d_dbamabiscaContext.abrir();
+                Models.Producto.invent.Clear();
+                SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, precio, cantidad from producto", db_a7311d_dbamabiscaContext.con);
+                SqlDataReader ingresar2 = cons1.ExecuteReader();
+                while (ingresar2.Read())
+                {
+                    Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (float)ingresar2[4], (int)ingresar2[5]));
+                }
+                return View(Models.Producto.invent);
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
         public IActionResult Error()
