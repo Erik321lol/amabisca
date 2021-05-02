@@ -43,12 +43,27 @@ namespace amabisca.Models
        
         public static void abrir()
         {
-            con.Open();
+            try
+            {
+                con.Open();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         public static void cerrar()
         {
-            con.Close();
+            try
+            {
+                con.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

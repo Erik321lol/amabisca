@@ -111,45 +111,51 @@ namespace amabisca.Controllers
         [HttpPost]
         public IActionResult login(String usuario, String contrasena)
         {
-            String contra = "";
-            db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Select contraseña from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
-            SqlDataReader ingresar = cons.ExecuteReader(); 
-            while (ingresar.Read())
-            {
-                contra = ingresar["contraseña"].ToString();
-            }
-            db_a7311d_dbamabiscaContext.cerrar();
-
-            db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons1 = new SqlCommand("Select cod_rol_usuario from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
-            SqlDataReader ingresar1 = cons1.ExecuteReader();
-            while (ingresar1.Read())
-            {
-                tipo = ingresar1["cod_rol_usuario"].ToString();
-            }
-            db_a7311d_dbamabiscaContext.cerrar();
-
-            ViewData["tipo1"] = tipo + "usuario";
-
-            if (contra.Equals(contrasena))
-            {
-                if (tipo.Equals("1"))
+            try { 
+                String contra = "";
+                db_a7311d_dbamabiscaContext.abrir();
+                SqlCommand cons = new SqlCommand("Select contraseña from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+                SqlDataReader ingresar = cons.ExecuteReader(); 
+                while (ingresar.Read())
                 {
-                    return View("Index");
+                    contra = ingresar["contraseña"].ToString();
                 }
-                else if (tipo.Equals("2"))
-                {
-                    return View("Index");
-                }
-                else if (tipo.Equals("3"))
-                {
-                    return View("Index");
-                }
-                return View("Index");
+                db_a7311d_dbamabiscaContext.cerrar();
 
+                db_a7311d_dbamabiscaContext.abrir();
+                SqlCommand cons1 = new SqlCommand("Select cod_rol_usuario from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+                SqlDataReader ingresar1 = cons1.ExecuteReader();
+                while (ingresar1.Read())
+                {
+                    tipo = ingresar1["cod_rol_usuario"].ToString();
+                }
+                db_a7311d_dbamabiscaContext.cerrar();
+
+                ViewData["tipo1"] = tipo + "usuario";
+
+                if (contra.Equals(contrasena))
+                {
+                    if (tipo.Equals("1"))
+                    {
+                        return View("Index");
+                    }
+                    else if (tipo.Equals("2"))
+                    {
+                        return View("Index");
+                    }
+                    else if (tipo.Equals("3"))
+                    {
+                        return View("Index");
+                    }
+                    return View("Index");
+
+                }
+                else
+                {
+                    return View("login");
+                }
             }
-            else
+            catch
             {
                 return View("login");
             }
@@ -157,7 +163,15 @@ namespace amabisca.Controllers
 
         public IActionResult crear_usuario()
         {
-            return View();
+            if (tipo.Equals("1"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+            
         }
 
         public IActionResult Productos()
@@ -167,50 +181,64 @@ namespace amabisca.Controllers
         [HttpPost]
         public IActionResult Productos(String nombre_producto, String estado, String marca, String precio, String medida, String cantidad, String proveedor, String tipovehiculo, String unidadmedida)
         {
-
-            int tipo = 0;
-            if (tipovehiculo.Equals("Ligero"))
+            if (tipo.Equals("1") || tipo.Equals("1"))
             {
-                tipo = 1;
-            }
-            else if (tipovehiculo.Equals("Pesado"))
-            {
-                tipo = 2;
-            }
-            else if (tipovehiculo.Equals("Agricola"))
-            {
-                tipo = 3;
-            }
-            else if (tipovehiculo.Equals("Motocicleta"))
-            {
-                tipo = 4;
-            }
-
-            int unidad = 0;
-            {
-                if (unidadmedida.Equals("Metro"))
+                int tipo = 0;
+                if (tipovehiculo.Equals("Ligero"))
                 {
-                    unidad= 1;
+                    tipo = 1;
                 }
-                else if (unidadmedida.Equals("Centimetro"))
+                else if (tipovehiculo.Equals("Pesado"))
                 {
-                    unidad = 2;
+                    tipo = 2;
                 }
-            }
+                else if (tipovehiculo.Equals("Agricola"))
+                {
+                    tipo = 3;
+                }
+                else if (tipovehiculo.Equals("Motocicleta"))
+                {
+                    tipo = 4;
+                }
 
-            //agregar,editar,eliminar
-            db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ", "+unidad+")", db_a7311d_dbamabiscaContext.con);
-            cons.ExecuteNonQuery();
-            db_a7311d_dbamabiscaContext.cerrar();
-            return View();
+                int unidad = 0;
+                {
+                    if (unidadmedida.Equals("Metro"))
+                    {
+                        unidad = 1;
+                    }
+                    else if (unidadmedida.Equals("Centimetro"))
+                    {
+                        unidad = 2;
+                    }
+                }
+
+                //agregar,editar,eliminar
+                //db_a7311d_dbamabiscaContext.abrir();
+                //SqlCommand cons = new SqlCommand("Insert Into producto(nombre, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo + ", "+unidad+")", db_a7311d_dbamabiscaContext.con);
+                //cons.ExecuteNonQuery();
+                //db_a7311d_dbamabiscaContext.cerrar();
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
 
             
         }
 
         public IActionResult Inventario()
         {
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("1"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+            
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
