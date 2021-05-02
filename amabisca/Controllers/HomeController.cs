@@ -181,16 +181,15 @@ namespace amabisca.Controllers
         [HttpPost]
         public IActionResult Productos(String nombre_producto, String estado, String marca, String precio, String medida, String cantidad, String proveedor, String tipovehiculo, String unidadmedida)
         {
-<<<<<<< HEAD
-            if (tipo.Equals("1") || tipo.Equals("1"))
-=======
             String cod_proveedor = "";
 
             int tipo = 0;
+            int unidad = 0;
+
             if (tipovehiculo.Equals("Ligero"))
->>>>>>> 522761253f4849ec6d59512cf9794be789fc891d
+
             {
-                int tipo = 0;
+
                 if (tipovehiculo.Equals("Ligero"))
                 {
                     tipo = 1;
@@ -207,9 +206,8 @@ namespace amabisca.Controllers
                 {
                     tipo = 4;
                 }
-<<<<<<< HEAD
 
-                int unidad = 0;
+
                 {
                     if (unidadmedida.Equals("Metro"))
                     {
@@ -228,44 +226,44 @@ namespace amabisca.Controllers
                 //db_a7311d_dbamabiscaContext.cerrar();
                 return View();
             }
-            else
+
+
+
+            if (unidadmedida.Equals("Milimetro"))
             {
-                return View("error");
+                unidad = 3;
             }
-=======
-                else if (unidadmedida.Equals("Milimetro"))
-                {
-                    unidad = 3;
-                }
-                else if (unidadmedida.Equals("Litro"))
-                {
-                    unidad = 4;
-                }
-                else if (unidadmedida.Equals("Diametro"))
-                {
-                    unidad = 5;
-                }
-                else if (unidadmedida.Equals("Altura"))
-                {
-                    unidad = 6;
-                }
-                else if (unidadmedida.Equals("Ancho"))
-                {
-                    unidad = 7;
-                }
-                else if (unidadmedida.Equals("Espesor"))
-                {
-                    unidad = 8;
-                }
-                else if (unidadmedida.Equals("Peso"))
-                {
-                    unidad = 9;
-                }
-                else if (unidadmedida.Equals("Rosca"))
-                {
-                    unidad = 10;
-                }
+            else if (unidadmedida.Equals("Litro"))
+            {
+                unidad = 4;
             }
+            else if (unidadmedida.Equals("Diametro"))
+            {
+                unidad = 5;
+            }
+            else if (unidadmedida.Equals("Altura"))
+            {
+                unidad = 6;
+            }
+            else if (unidadmedida.Equals("Ancho"))
+            {
+                unidad = 7;
+            }
+            else if (unidadmedida.Equals("Espesor"))
+            {
+                unidad = 8;
+            }
+            else if (unidadmedida.Equals("Peso"))
+            {
+                unidad = 9;
+            }
+            else if (unidadmedida.Equals("Rosca"))
+            {
+                unidad = 10;
+            }
+        
+        
+        
             db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons1 = new SqlCommand("Select cod_proveedor from proveedor where nombre= '" + proveedor + "'", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar1 = cons1.ExecuteReader();
@@ -280,7 +278,6 @@ namespace amabisca.Controllers
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
             return View();
->>>>>>> 522761253f4849ec6d59512cf9794be789fc891d
 
         }
 
@@ -294,8 +291,8 @@ namespace amabisca.Controllers
             {
                 return View("error");
             }
-            
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
         public IActionResult Error()
