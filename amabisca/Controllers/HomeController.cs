@@ -81,16 +81,15 @@ namespace amabisca.Controllers
             return View();
         }
 
-        /*   [HttpPost]
-           public ActionResult Ventas(String cod_producto, String nombre, String cantidad)
+          [HttpPost]
+           public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad)
             {
-         agregar,editar,eliminar
              db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into proveedor values ('" + int.Parse(cod_producto) + "', '" + nombre + "', '" + int.Parse(cantidad) + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into venta (cantidadventa, codcliente, codproducto, codusuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
                 return View();
-          }*/
+          }
 
         public IActionResult Factura()
         {
