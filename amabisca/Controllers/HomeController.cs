@@ -128,10 +128,11 @@ namespace amabisca.Controllers
 
         public static String tipo = "";
         public static String nombre_usuario_actual = "";
-
+        
         [HttpPost]
         public IActionResult login(String usuario, String contrasena)
         {
+            String estado = "";
             nombre_usuario_actual = usuario;
             try { 
                 String contra = "";
@@ -174,7 +175,9 @@ namespace amabisca.Controllers
                 }
                 else
                 {
-                    return View("login");
+                    estado = "1";
+                    ViewData["estado"] = estado;
+                    return View();
                 }
             }
             catch
@@ -370,7 +373,7 @@ namespace amabisca.Controllers
                 db_a7311d_dbamabiscaContext.cerrar();
             }else if (contra.Equals(""))
             {
-
+                
             }
             else
             {
@@ -382,6 +385,20 @@ namespace amabisca.Controllers
 
         public ActionResult popup()
         {
+            return View();
+        }
+
+        public ActionResult eliminar()
+        {
+            return View();
+        }
+
+        public ActionResult eliminar(String usuario, String contra)
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario +"')", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
             return View();
         }
     }
