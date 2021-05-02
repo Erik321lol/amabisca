@@ -14,7 +14,6 @@ namespace amabisca.Models
         public double Subtotal { get; set; }
         public double Total { get; set; }
         public int CodVenta { get; set; }
-
         public virtual Ventum CodVentaNavigation { get; set; }
     }
 }

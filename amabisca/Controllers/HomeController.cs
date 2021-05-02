@@ -50,6 +50,7 @@ namespace amabisca.Controllers
             {
                 return View("error");
             }
+            
         }
 
         public IActionResult Proveedores()
@@ -80,16 +81,15 @@ namespace amabisca.Controllers
             return View();
         }
 
-        /*   [HttpPost]
-           public ActionResult Ventas(String cod_producto, String nombre, String cantidad)
+          [HttpPost]
+           public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad)
             {
-         agregar,editar,eliminar
              db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into proveedor values ('" + int.Parse(cod_producto) + "', '" + nombre + "', '" + int.Parse(cantidad) + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into venta (cantidadventa, codcliente, codproducto, codusuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
                 return View();
-          }*/
+          }
 
         public IActionResult Factura()
         {
@@ -107,6 +107,7 @@ namespace amabisca.Controllers
                 return View("error");
             }
         }
+
 
         [HttpPost]
         public IActionResult Registro_clientes(String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String nit, String telefono, String direccion, String dpi)
@@ -356,7 +357,47 @@ namespace amabisca.Controllers
                 return View("error");
             }
             
-            
-        }       
+           
+        }  
+        
+        public ActionResult cambiarcontra()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult cambiarcontra(String usuario, String contraa, String contran)
+        {
+            String contra = "";
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar1 = cons1.ExecuteReader();
+            while (ingresar1.Read())
+            {
+                contra = ingresar1["cod_proveedor"].ToString();
+            }
+
+            if (contra == contraa)
+            {
+                db_a7311d_dbamabiscaContext.abrir();
+                SqlCommand cons = new SqlCommand("Insert Into usuario(UPDATE usuario SET contraseña =" + contraa + "WHERE usuario = '" + usuario + "';)", db_a7311d_dbamabiscaContext.con);
+                cons.ExecuteNonQuery();
+                db_a7311d_dbamabiscaContext.cerrar();
+            }else if (contra.Equals(""))
+            {
+
+            }
+            else
+            {
+                
+            }
+            return View();
+
+        }
+
+        public ActionResult popup()
+        {
+            return View();
+        }
     }
 }
