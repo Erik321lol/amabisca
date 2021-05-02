@@ -408,15 +408,20 @@ namespace amabisca.Controllers
         public ActionResult eliminar(String usuario, String contraa)
         {
             String contra = "";
-            db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
-            SqlDataReader ingresar1 = cons1.ExecuteReader();
-            while (ingresar1.Read())
+            if (tipo.Equals("1"))
             {
-                contra = ingresar1["cod_proveedor"].ToString();
-            }
+                
+                db_a7311d_dbamabiscaContext.abrir();
+                SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+                SqlDataReader ingresar1 = cons1.ExecuteReader();
+                while (ingresar1.Read())
+                {
+                    contra = ingresar1["cod_proveedor"].ToString();
+                }
 
-            db_a7311d_dbamabiscaContext.cerrar();
+                db_a7311d_dbamabiscaContext.cerrar();
+            }
+            
 
             if (contra == contraa)
             {
