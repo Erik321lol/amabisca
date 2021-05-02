@@ -107,10 +107,12 @@ namespace amabisca.Controllers
 
 
         public static String tipo = "";
+        public static String nombre_usuario_actual = "";
 
         [HttpPost]
         public IActionResult login(String usuario, String contrasena)
         {
+            nombre_usuario_actual = usuario;
             try { 
                 String contra = "";
                 db_a7311d_dbamabiscaContext.abrir();
