@@ -407,14 +407,31 @@ namespace amabisca.Controllers
         {
             return View();
         }
-
-        public ActionResult eliminar(String usuario, String contra)
+        [HttpPost]
+        public ActionResult eliminar(String usuario, String contraa)
         {
+            String contra = "";
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario +"')", db_a7311d_dbamabiscaContext.con);
-            cons.ExecuteNonQuery();
+            SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar1 = cons1.ExecuteReader();
+            while (ingresar1.Read())
+            {
+                contra = ingresar1["cod_proveedor"].ToString();
+            }
             db_a7311d_dbamabiscaContext.cerrar();
-            return View();
+            if (contra.Equals(contraa))
+            {
+                db_a7311d_dbamabiscaContext.abrir();
+                SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario + "')", db_a7311d_dbamabiscaContext.con);
+                cons.ExecuteNonQuery();
+                db_a7311d_dbamabiscaContext.cerrar();
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+            
         }
     }
 }
