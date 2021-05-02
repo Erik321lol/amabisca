@@ -7,10 +7,18 @@ namespace amabisca.Models
 {
     public partial class Producto
     {
-        public Producto()
+        public static List<Producto> invent = new List<Producto>();
+        public Producto(object v) { }
+        public Producto(int cod_producto, String nombre, String estado, String marca, double precio, int cantidad)
         {
             Inventarios = new HashSet<Inventario>();
             Venta = new HashSet<Ventum>();
+            CodProducto = cod_producto;
+            Nombre = nombre;
+            Estado = estado;
+            Marca = marca;
+            Precio = precio;
+            Cantidad = cantidad;
         }
 
         public int CodProducto { get; set; }
