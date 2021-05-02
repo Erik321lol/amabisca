@@ -353,7 +353,7 @@ namespace amabisca.Controllers
                 SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo1 + ")", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
-                return View();
+                return View("popup");
             }
             else
             {
@@ -386,15 +386,12 @@ namespace amabisca.Controllers
                 SqlCommand cons = new SqlCommand("Insert Into usuario(UPDATE usuario SET contraseña =" + contraa + "WHERE usuario = '" + usuario + "';)", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
-            }else if (contra.Equals(""))
-            {
-                
+                return View("popup");
             }
             else
             {
-                
+                return View("fallo");
             }
-            return View();
 
         }
 
@@ -418,18 +415,20 @@ namespace amabisca.Controllers
             {
                 contra = ingresar1["cod_proveedor"].ToString();
             }
+
             db_a7311d_dbamabiscaContext.cerrar();
-            if (contra.Equals(contraa))
+
+            if (contra == contraa)
             {
                 db_a7311d_dbamabiscaContext.abrir();
                 SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario + "')", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
-                return View();
+                return View("popup");
             }
             else
             {
-                return View();
+                return View("fallo");
             }
             
         }
