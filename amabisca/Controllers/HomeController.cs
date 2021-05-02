@@ -42,14 +42,26 @@ namespace amabisca.Controllers
 
         public IActionResult Privacy()
         {
-         
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
         }
 
         public IActionResult Proveedores()
         {
-        
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
         }
 
         [HttpPost]
@@ -86,7 +98,14 @@ namespace amabisca.Controllers
 
         public IActionResult Registro_clientes()
         {
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
         }
 
         [HttpPost]
@@ -178,7 +197,14 @@ namespace amabisca.Controllers
 
         public IActionResult Productos()
         {
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
         }
         [HttpPost]
         public IActionResult Productos(String nombre_producto, String estado, String marca, String precio, String medida, String cantidad, String proveedor, String tipovehiculo, String unidadmedida)
@@ -186,7 +212,6 @@ namespace amabisca.Controllers
             String cod_proveedor = "";
 
             int tipo = 0;
-            
 
            
                 if (tipovehiculo.Equals("Ligero"))
