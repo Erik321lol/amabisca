@@ -50,6 +50,7 @@ namespace amabisca.Controllers
             {
                 return View("error");
             }
+            
         }
 
         public IActionResult Proveedores()
@@ -368,6 +369,9 @@ namespace amabisca.Controllers
                 SqlCommand cons = new SqlCommand("Insert Into usuario(UPDATE usuario SET contraseña =" + contraa + "WHERE usuario = '" + usuario + "';)", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
+            }else if (contra.Equals(""))
+            {
+
             }
             else
             {
@@ -375,6 +379,11 @@ namespace amabisca.Controllers
             }
             return View();
 
+        }
+
+        public ActionResult popup()
+        {
+            return View();
         }
     }
 }
