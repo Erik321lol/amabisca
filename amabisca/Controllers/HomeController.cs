@@ -437,5 +437,34 @@ namespace amabisca.Controllers
             }
             
         }
+
+        public ActionResult altas_bajas()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult altas_bajas(String altabaja, String nombre_producto, String marca, String estado, String cantidad)
+        {
+            int tipo = 0;
+
+            if (altabaja.Equals("Alta"))
+            {
+                tipo = 1;
+            }
+            else if (altabaja.Equals("Baja"))
+            {
+                tipo = 2;
+            }
+
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, marca, estado, cantidad) values ('" + nombre_producto + "', '" + marca + "', '" + estado + "', " + int.Parse(cantidad) + ")", db_a7311d_dbamabiscaContext.con);
+            cons.ExecuteNonQuery();
+            db_a7311d_dbamabiscaContext.cerrar();
+
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "altas_bajas";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <h2><b>Altas y Bajas</b></h2>
+
+    <div style="text-align: center">
+        <br />
+        <h3>Altas y Bajas</h3>
+    </div>
+
+    <br />
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Nombre del Producto</label>
+            <div class="col-sm-5">
+                <input type="text" name="nombre_producto" class="form-control" id="nombre_producto" placeholder="Nombre del Prodcuto" />
+            </div>
+        </div>
+        <div style="float: right">
+            <select name="altabaja" id="altabaja">
+                <option>Alta</option>
+                <option>Baja</option>
+            </select name="altabaja">
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Marca</label>
+            <div class="col-sm-5">
+                <input type="text" name="marca" class="form-control" id="marca" placeholder="Marca" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Estado</label>
+            <div class="col-sm-5">
+                <input type="text" name="estado" class="form-control" id="estado" placeholder="Estado" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Cantidad</label>
+            <div class="col-sm-5">
+                <input type="text" name="cantidad" class="form-control" id="cantidad" placeholder="Cantidad" />
+            </div>
+        </div>
+        <div style="text-align: center">
+            <button type="submit" class="btn btn-success">Ejecutar Cambio</button>
+        </div>
+    </form>
+</body>
+</html>
+
