@@ -60,6 +60,7 @@ namespace amabisca
                     name: "default",
                     pattern: "{controller=Home}/{action=login}/{id?}");
             });
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath,"../Rotativa");
         }
     }
 }
