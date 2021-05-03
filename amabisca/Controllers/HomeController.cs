@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Rotativa.AspNetCore;
+
 
 namespace amabisca.Controllers
 {
@@ -93,7 +95,11 @@ namespace amabisca.Controllers
 
         public IActionResult Factura()
         {
-            return View();
+
+            return new ViewAsPdf("Factura")
+            {
+
+            };
         }
 
         public IActionResult Registro_clientes()
