@@ -375,15 +375,16 @@ namespace amabisca.Controllers
             db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar1 = cons1.ExecuteReader();
+
             while (ingresar1.Read())
             {
                 contra = ingresar1["cod_proveedor"].ToString();
             }
-
+            db_a7311d_dbamabiscaContext.cerrar();
             if (contra == contraa)
             {
                 db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons = new SqlCommand("Insert Into usuario(UPDATE usuario SET contraseña =" + contraa + "WHERE usuario = '" + usuario + "';)", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons = new SqlCommand("UPDATE usuario SET contraseña =" + contran + "WHERE usuario = '" + usuario + "';", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
                 return View("popup");
@@ -416,7 +417,7 @@ namespace amabisca.Controllers
                 SqlDataReader ingresar1 = cons1.ExecuteReader();
                 while (ingresar1.Read())
                 {
-                    contra = ingresar1["cod_proveedor"].ToString();
+                    contra = ingresar1["contraseña"].ToString();
                 }
 
                 db_a7311d_dbamabiscaContext.cerrar();
@@ -426,7 +427,7 @@ namespace amabisca.Controllers
             if (contra == contraa)
             {
                 db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario + "')", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons = new SqlCommand("DELETE from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
                 return View("popup");
