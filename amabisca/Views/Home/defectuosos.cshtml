@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+@model List<Producto>
+<head>
+
+</head>
+<body>
+
+    <div style="float: right">
+        <input type="image" src="https://previews.123rf.com/images/martialred/martialred1507/martialred150700667/42613345-icono-plana-de-la-impresora-de-inyecci%C3%B3n-de-tinta-para-aplicaciones-y-sitios-web.jpg" width="68" height="68">
+        <br />
+        <label>Imprimir</label>
+    </div>
+    <h2><u>Inventario</u></h2>
+
+    <div style="text-align: center">
+        <br />
+        <h3>Consulta de Inventario</h3>
+    </div>
+    <br />
+    <div style="text-align: left">
+        <h5><u>Tabla de Productos Defectuosos</u></h5>
+        <table border="1">
+
+            <thead>
+                <tr><td>Cod_Producto</td><td>Nombre</td><td>Estado</td><td>Marca</td><td>Cantidad</td></tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CodProducto</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Estado</td>
+                        <td>@item.Marca</td>
+                        <td>@item.Cantidad</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+</body>
+</html>
+

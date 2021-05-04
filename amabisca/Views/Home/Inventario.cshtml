@@ -5,64 +5,28 @@
 </head>
 <body>
 
-    <div style="float: right">
-        <input type="image" src="https://previews.123rf.com/images/martialred/martialred1507/martialred150700667/42613345-icono-plana-de-la-impresora-de-inyecci%C3%B3n-de-tinta-para-aplicaciones-y-sitios-web.jpg" width="68" height="68">
-        <br />
-        <label>Imprimir</label>
-    </div>
+   
     <h2><u>Inventario</u></h2>
 
     <div style="text-align: center">
         <br />
         <h3>Consulta de Inventario</h3>
     </div>
-
-    <br />
-
-    <select name="tipoinventario">
-
-        <option>Productos en Stock</option>
-        <option>Productos Vendidos</option>
-        <option>Productos Defectuosos</option>
-    </select>
-
     <br />
     <br />
-    <div style="text-align: left">
-        <h5><u>Tabla de Productos Precio</u></h5>
-        <table border="1">
-
-            <thead>
-                <tr><td>Cod_Producto</td><td>Nombre</td><td>Estado</td><td>Marca</td><td>Cantidad</td></tr>
-
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.CodProducto</td>
-                        <td>@item.Nombre</td>
-                        <td>@item.Estado</td>
-                        <td>@item.Marca</td>
-                        <td>@item.Cantidad</td>
-                    </tr>
-
-                }
-            </tbody>
-        </table>
-    </div>
-    <br />
-
-    <div>
-
-    </div>
     <div style="text-align: center">
-        <button type="submit" class="btn btn-success">Consultar</button>
+        
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="stock"><button type="button" class="btn btn-success">Productos en Stock</button></a>
+    </div>
+    <br />
+    <div style="text-align: center">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="defectuosos"><button type="button" class="btn btn-success">Productos Defectuosos</button></a>
+    </div>
+    <br />
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-success">Productos Vendidos</button>
     </div>
 
-    <div style="text-align: left">
-        <button type="submit" class="btn btn-success">Consultar</button>
-    </div>
 
 
 
