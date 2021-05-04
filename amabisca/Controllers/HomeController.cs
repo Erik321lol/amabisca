@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Rotativa.AspNetCore;
+
 
 namespace amabisca.Controllers
 {
@@ -93,7 +95,11 @@ namespace amabisca.Controllers
 
         public IActionResult Factura()
         {
-            return View();
+
+            return new ViewAsPdf("Factura")
+            {
+
+            };
         }
 
         public IActionResult Registro_clientes()
@@ -296,30 +302,33 @@ namespace amabisca.Controllers
 
         }
 
-        public IActionResult Inventario()
-        {
-            if (tipo.Equals("1") || tipo.Equals("1"))
-            {
-                return View();
-            }
-            else
-            {
-                return View("error");
-            }
-        }
+        //public IActionResult Inventario()
+        //{
+        //    if (tipo.Equals("1") || tipo.Equals("1"))
+        //    {
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        return View("error");
+        //    }
+        //}
 
-        [HttpPost]
-        public IActionResult Inventario( String tipoinventario)
+        [HttpGet]
+        public IActionResult Inventario()
+
         {
+            
                 db_a7311d_dbamabiscaContext.abrir();
                 Models.Producto.invent.Clear();
-                SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, precio, cantidad from producto", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, cantidad from producto", db_a7311d_dbamabiscaContext.con);
                 SqlDataReader ingresar2 = cons1.ExecuteReader();
                 while (ingresar2.Read())
                 {
-                    Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (float)ingresar2[4], (int)ingresar2[5]));
+                    Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (int)ingresar2[4]));
                 }
                 return View(Models.Producto.invent);
+
 
         }
 
@@ -333,34 +342,49 @@ namespace amabisca.Controllers
         [HttpPost]
         public ActionResult crear_usuario(String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String dpi, String usuario, String contrasena, String tipousuario)
         {
-            int tipo1 = 0;
-            if (tipo.Equals("1"))
-            {  
-                if (tipousuario.Equals("Administrador"))
-                {
-                    tipo1 = 1;
-                }
-                else if (tipousuario.Equals("Coordinador"))
-                {
-                    tipo1 = 2;
-                }
-                else if (tipousuario.Equals("Usuario basico"))
-                {
-                    tipo1 = 3;
-                }
-                //agregar,editar,eliminar
-                db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo1 + ")", db_a7311d_dbamabiscaContext.con);
-                cons.ExecuteNonQuery();
-                db_a7311d_dbamabiscaContext.cerrar();
-                return View("popup");
+            String userex = "";
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons1 = new SqlCommand("Select usuario from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar1 = cons1.ExecuteReader();
+            
+            while (ingresar1.Read())
+            {
+                userex = ingresar1["usuario"].ToString();
             }
-            else
+            db_a7311d_dbamabiscaContext.cerrar();
+            if (usuario.Equals(userex))
             {
                 return View("error");
             }
-            
-           
+            else
+            {
+                int tipo1 = 0;
+                if (tipo.Equals("1"))
+                {
+                    if (tipousuario.Equals("Administrador"))
+                    {
+                        tipo1 = 1;
+                    }
+                    else if (tipousuario.Equals("Coordinador"))
+                    {
+                        tipo1 = 2;
+                    }
+                    else if (tipousuario.Equals("Usuario basico"))
+                    {
+                        tipo1 = 3;
+                    }
+                    //agregar,editar,eliminar
+                    db_a7311d_dbamabiscaContext.abrir();
+                    SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo1 + ")", db_a7311d_dbamabiscaContext.con);
+                    cons.ExecuteNonQuery();
+                    db_a7311d_dbamabiscaContext.cerrar();
+                    return View("popup");
+                }
+                else
+                {
+                    return View("error");
+                }
+            }
         }  
         
         public ActionResult cambiarcontra()

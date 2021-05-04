@@ -9,7 +9,7 @@ namespace amabisca.Models
     {
         public static List<Producto> invent = new List<Producto>();
         public Producto(object v) { }
-        public Producto(int cod_producto, String nombre, String estado, String marca, double precio, int cantidad)
+        public Producto(int cod_producto, String nombre, String estado, String marca, int cantidad)
         {
             Inventarios = new HashSet<Inventario>();
             Venta = new HashSet<Ventum>();
@@ -17,7 +17,6 @@ namespace amabisca.Models
             Nombre = nombre;
             Estado = estado;
             Marca = marca;
-            Precio = precio;
             Cantidad = cantidad;
         }
 
@@ -25,7 +24,7 @@ namespace amabisca.Models
         public string Nombre { get; set; }
         public string Estado { get; set; }
         public string Marca { get; set; }
-        public double Precio { get; set; }
+        public float Precio { get; set; }
         public string Medida { get; set; }
         public int Cantidad { get; set; }
         public int CodProveedor { get; set; }
