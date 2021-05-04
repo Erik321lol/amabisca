@@ -28,7 +28,7 @@ namespace amabisca.Controllers
             //SqlCommand cons = new SqlCommand("Insert Into Cliente(Nombre1, Nombre2, Apellido1, Apellido2, Nit, Telefono, Direccion, Dpi) values ('Erik', 'Adolfo', 'Mendez', 'Guillen', '12345678', '12345678', 'ciudad',201845335)", db_a7311d_dbamabiscaContext.con);
             //cons.ExecuteNonQuery();
             //db_a7311d_dbamabiscaContext.cerrar();
-            
+
             //consultar
             /*db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons = new SqlCommand("Select * from Cliente", db_a7311d_dbamabiscaContext.con);
@@ -52,7 +52,7 @@ namespace amabisca.Controllers
             {
                 return View("error");
             }
-            
+
         }
 
         public IActionResult Proveedores()
@@ -68,7 +68,7 @@ namespace amabisca.Controllers
         }
 
         [HttpPost]
-        public ActionResult Proveedores( String nombre, String telefono, String direccion, String ciudad, String pais)
+        public ActionResult Proveedores(String nombre, String telefono, String direccion, String ciudad, String pais)
         {
             //agregar,editar,eliminar
             db_a7311d_dbamabiscaContext.abrir();
@@ -83,15 +83,15 @@ namespace amabisca.Controllers
             return View();
         }
 
-          [HttpPost]
-           public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad, String codusuario)
-            {
-             db_a7311d_dbamabiscaContext.abrir();
+        [HttpPost]
+        public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad, String codusuario)
+        {
+            db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons = new SqlCommand("Insert Into venta (cantidadventa, cod_cliente, cod_producto, cod_usuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ", " + int.Parse(codusuario) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
-                return View();
-          }
+            return View();
+        }
 
         public IActionResult Factura()
         {
@@ -101,6 +101,56 @@ namespace amabisca.Controllers
 
             };
         }
+        [HttpGet]
+        public IActionResult Stock()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Producto.invent.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, cantidad from producto", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (int)ingresar2[4]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Producto.invent);
+
+        }
+
+        [HttpGet]
+        public IActionResult Defectuosos()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Producto.invent.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT  cod_producto, nombre, estado, marca, cantidad FROM producto where estado = 'defectuoso';", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar5 = cons1.ExecuteReader();
+
+            while (ingresar5.Read())
+            {
+                Models.Producto.invent.Add(new Models.Producto((int)ingresar5[0], (string)ingresar5[1], (string)ingresar5[2], (string)ingresar5[3], (int)ingresar5[4]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Producto.invent);
+
+        }
+
+        //[HttpGet]
+        //public IActionResult Vendida()
+        //{
+        //    db_a7311d_dbamabiscaContext.abrir();
+        //    Models.Producto.invent.Clear();
+        //    SqlCommand cons1 = new SqlCommand("SELECT p. cod_producto, p.nombre, p.estado, p.marca, p.cantidad, v.cantidad_venta FROM producto p INNER JOIN venta v ON p.cod_producto=v.cod_producto", db_a7311d_dbamabiscaContext.con);
+        //    SqlDataReader ingresar5 = cons1.ExecuteReader();
+
+        //    while (ingresar5.Read())
+        //    {
+        //        Models.Producto.invent.Add(new Models.Producto((int)ingresar5[0], (string)ingresar5[1], (string)ingresar5[2], (string)ingresar5[3], (int)ingresar5[4], (string)ingresar5[5]));
+        //    }
+        //    db_a7311d_dbamabiscaContext.cerrar();
+        //    return View(Models.Producto.invent);
+
+        //}
 
         public IActionResult Registro_clientes()
         {
@@ -309,16 +359,9 @@ namespace amabisca.Controllers
 
         {
           
-                db_a7311d_dbamabiscaContext.abrir();
-                Models.Producto.invent.Clear();
-                SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, cantidad from producto", db_a7311d_dbamabiscaContext.con);
-                SqlDataReader ingresar2 = cons1.ExecuteReader();
-                while (ingresar2.Read())
-                {
-                    Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (int)ingresar2[4]));
-                }
-                return View(Models.Producto.invent);     
-
+               
+                return View();
+                
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
