@@ -470,21 +470,21 @@ namespace amabisca.Controllers
 
         [HttpPost]
 
-        public ActionResult altas_bajas(String altabaja, String nombre_producto, String marca, String estado, String cantidad)
+        public ActionResult altas_bajas(String altabaja, String codigo_producto)
         {
-            int tipo = 0;
+            String tipo = " ";
 
             if (altabaja.Equals("Alta"))
             {
-                tipo = 1;
+                tipo = "Alta";
             }
             else if (altabaja.Equals("Baja"))
             {
-                tipo = 2;
+                tipo = "Baja";
             }
 
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into producto(nombre, marca, estado, cantidad) values ('" + nombre_producto + "', '" + marca + "', '" + estado + "', " + int.Parse(cantidad) + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into alta_baja(tipo, cod_producto) values ('" + tipo + "', " + int.Parse(codigo_producto) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
 
