@@ -19,99 +19,51 @@
 
     <br />
 
+    <select name="tipoinventario">
 
-    <select>
         <option>Productos en Stock</option>
         <option>Productos Vendidos</option>
         <option>Productos Defectuosos</option>
     </select>
-    <div style="text-align: left">
-        <br />
-        <br />
-        <h7 class="h7">Buscador</h7>
-        <div class="flexsearch">
-            <div class="flexsearch--wrapper">
-                <form class="flexsearch--form" action="#" method="post">
-                    
-                        @foreach (var item in Model)
-                        {
-                            <Span>@item.CodProducto</Span>
-                            <Span>@item.Nombre</Span>
-                            <Span>@item.Estado</Span>
-                            <Span>@item.Marca</Span>
-                            <Span>@item.Precio</Span>
-                            <Span>@item.Cantidad</Span>
-                         }
-                   
-                    
-                    <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="Buscador">
-                    </div>
-                    <input class="flexsearch--submit" type="submit" value="&#10140;" />
-                </form>
-            </div>
-        </div>
-    </div>
+
     <br />
     <br />
     <div style="text-align: left">
-        <h5><u>Tabla de Productos</u></h5>
+        <h5><u>Tabla de Productos Precio</u></h5>
         <table border="1">
 
-            <tr>
+            <thead>
+                <tr><td>Cod_Producto</td><td>Nombre</td><td>Estado</td><td>Marca</td><td>Cantidad</td></tr>
 
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Estado</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CodProducto</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Estado</td>
+                        <td>@item.Marca</td>
+                        <td>@item.Cantidad</td>
+                    </tr>
 
-            </tr>
-
-            <tr>
-
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-
-            </tr>
-
-            <tr>
-
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
-                <th>10</th>
-                <th>11</th>
-                <th>12</th>
-
-            </tr>
-
-            <tr>
-
-                <th>13</th>
-                <th>14</th>
-                <th>15</th>
-                <th>16</th>
-                <th>17</th>
-                <th>18</th>
-
-            </tr>
-
+                }
+            </tbody>
         </table>
     </div>
     <br />
 
     <div>
-       
+
     </div>
     <div style="text-align: center">
         <button type="submit" class="btn btn-success">Consultar</button>
     </div>
+
+    <div style="text-align: left">
+        <button type="submit" class="btn btn-success">Consultar</button>
+    </div>
+
 
 
 </body>
