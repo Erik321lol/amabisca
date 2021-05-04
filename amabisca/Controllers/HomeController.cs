@@ -302,23 +302,13 @@ namespace amabisca.Controllers
 
         }
 
-        //public IActionResult Inventario()
-        //{
-        //    if (tipo.Equals("1") || tipo.Equals("1"))
-        //    {
-        //        return View();
-        //    }
-        //    else
-        //    {
-        //        return View("error");
-        //    }
-        //}
+       
 
         [HttpGet]
-        public IActionResult Inventario()
+        public IActionResult Inventario(String tipoinventario)
 
         {
-            
+          
                 db_a7311d_dbamabiscaContext.abrir();
                 Models.Producto.invent.Clear();
                 SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, cantidad from producto", db_a7311d_dbamabiscaContext.con);
@@ -327,8 +317,7 @@ namespace amabisca.Controllers
                 {
                     Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (int)ingresar2[4]));
                 }
-                return View(Models.Producto.invent);
-
+                return View(Models.Producto.invent);     
 
         }
 
