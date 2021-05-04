@@ -467,5 +467,12 @@ namespace amabisca.Controllers
             return View();
         }
 
+        public ActionResult reportes()
+        {
+            return View();
+        }
+
+        
+
     }
 }
