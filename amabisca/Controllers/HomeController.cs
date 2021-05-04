@@ -302,25 +302,26 @@ namespace amabisca.Controllers
 
         }
 
-        public IActionResult Inventario()
-        {
-            if (tipo.Equals("1") || tipo.Equals("1"))
-            {
-                return View();
-            }
-            else
-            {
-                return View("error");
-            }
-        }
+        //public IActionResult Inventario()
+        //{
+        //    if (tipo.Equals("1") || tipo.Equals("1"))
+        //    {
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        return View("error");
+        //    }
+        //}
 
-        [HttpPost]
-        public IActionResult Inventario( String tipoinventario)
+        [HttpGet]
+        public IActionResult Inventario()
         {
                 db_a7311d_dbamabiscaContext.abrir();
                 Models.Producto.invent.Clear();
                 SqlCommand cons1 = new SqlCommand("SELECT cod_producto, nombre, estado, marca, precio, cantidad from producto", db_a7311d_dbamabiscaContext.con);
                 SqlDataReader ingresar2 = cons1.ExecuteReader();
+                
                 while (ingresar2.Read())
                 {
                     Models.Producto.invent.Add(new Models.Producto((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (float)ingresar2[4], (int)ingresar2[5]));
