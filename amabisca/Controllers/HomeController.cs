@@ -84,10 +84,10 @@ namespace amabisca.Controllers
         }
 
           [HttpPost]
-           public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad)
+           public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad, String codusuario)
             {
              db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into venta (cantidadventa, codcliente, codproducto, codusuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into venta (cantidadventa, cod_cliente, cod_producto, cod_usuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ", " + int.Parse(codusuario) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
                 return View();
