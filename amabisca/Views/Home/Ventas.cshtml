@@ -2,49 +2,68 @@
 @{
     ViewData["Title"] = "Ventas";
 }
-<div style="float: right">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Factura"><img src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="100" height="100"></a>
-    <label>Generar Factura</label>
-</div>
 
-<h2><u>Ventas</u></h2>
 
-<div style="text-align: center">
-    <h3>Registro de Ventas</h3>
-</div>
-<br />
-<br />
+<html>
+<head>
+    <style>
+        body {
+            background: url(../Imagenes/index/fondo.jpg);
+            padding: 2px 20px 2px 20px;
+            font-family: 'Oswald', sans-serif;
+        }
+    </style>
 
-<form class="form-group" method="post">
+</head>
+<body>
+    <div style="float: right">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Factura"><img src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="100" height="100"></a>
+        <label>Generar Factura</label>
+    </div>
 
-    <div class="form-group">
-        <label for="cod_producto" class="col-sm-5 control-label">Codigo Producto</label>
-        <div class="col-sm-5">
-            <input type="text" name="cod_producto" class="form-control" id="cod_producto" placeholder="Codigo Producto">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="nombre_producto" class="col-sm-5 control-label">Codigo Cliente</label>
-        <div class="col-sm-5">
-            <input type="text" name="cod_cliente" class="form-control" id="cod_cliente" placeholder="No. NIT">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
-        <div class="col-sm-5">
-            <input type="text" name="cantidad" class="form-control" id="cantidad" placeholder="Cantidad">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label">Codigo Usuario</label>
-        <div class="col-sm-5">
-            <input type="text" name="codusuario" class="form-control" id="codusuario" placeholder="cod. vendedor">
-        </div>
-    </div>
-    <br />
-    <br />
+    <h2><u>Ventas</u></h2>
+
     <div style="text-align: center">
-        <button type="submit" class="btn btn-success">Registrar</button>
+        <h3>Registro de Ventas</h3>
     </div>
+    <br />
+    <br />
 
-</form>
+    <form class="form-group" method="post">
+
+        <div class="form-group">
+            <label for="cod_producto" class="col-sm-5 control-label">Codigo Producto</label>
+            <div class="col-sm-5">
+                <input type="text" name="cod_producto" class="form-control" id="cod_producto" placeholder="Codigo Producto">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nombre_producto" class="col-sm-5 control-label">Codigo Cliente</label>
+            <div class="col-sm-5">
+                <input type="text" name="cod_cliente" class="form-control" id="cod_cliente" placeholder="No. NIT">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
+            <div class="col-sm-5">
+                <input type="text" name="cantidad" class="form-control" id="cantidad" placeholder="Cantidad">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cantidad" class="col-sm-2 control-label">Codigo Usuario</label>
+            <div class="col-sm-5">
+                <input type="text" name="codusuario" class="form-control" id="codusuario" placeholder="cod. vendedor">
+            </div>
+        </div>
+        <br />
+        <br />
+        <div style="text-align: center">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+
+    </form>
+</body>
+</html>
+
+
+
