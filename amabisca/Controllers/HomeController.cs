@@ -273,7 +273,6 @@ namespace amabisca.Controllers
                         return View("Index");
                     }
                     return View("Index");
-
                 }
                 else
                 {
@@ -490,7 +489,7 @@ namespace amabisca.Controllers
 
             while (ingresar1.Read())
             {
-                contra = ingresar1["cod_proveedor"].ToString();
+                contra = ingresar1["contraseña"].ToString();
             }
             db_a7311d_dbamabiscaContext.cerrar();
             if (contra == contraa)
