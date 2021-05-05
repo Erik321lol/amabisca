@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace amabisca.Models
 {
+    
     public partial class Proveedor
     {
-        public Proveedor()
+
+        public static List<Proveedor> proveedores = new List<Proveedor>();
+
+        public Proveedor(object v) { }
+
+        public Proveedor(int cod_proveedor, String nombre, String direccion, String telefono, String pais, String ciudad)
         {
             Productos = new HashSet<Producto>();
+            CodProveedor = cod_proveedor;
+            Nombre = nombre;
+            Direccion = direccion;
+            Telefono = telefono;
+            Pais = pais;
+            Ciudad = ciudad;
         }
 
         public int CodProveedor { get; set; }

@@ -656,6 +656,74 @@ namespace amabisca.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult todos_proveedores()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Proveedor.proveedores.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_proveedor, nombre, direccion, telefono, pais, ciudad from proveedor", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.Proveedor.proveedores.Add(new Models.Proveedor((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (string)ingresar2[4], (string)ingresar2[5]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Proveedor.proveedores);
+
+        }
+
+        [HttpGet]
+        public ActionResult pdf4()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Proveedor.proveedores.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_proveedor, nombre, direccion, telefono, pais, ciudad from proveedor", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.Proveedor.proveedores.Add(new Models.Proveedor((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (string)ingresar2[4], (string)ingresar2[5]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Proveedor.proveedores);
+
+        }
+
+        [HttpGet]
+        public ActionResult todos_clientes()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Cliente.clientes.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_cliente, nombre1, nombre2, apellido1, apellido2, nit, telefono, direccion from cliente", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.Cliente.clientes.Add(new Models.Cliente((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (string)ingresar2[4], (string)ingresar2[5], (string)ingresar2[6], (string)ingresar2[7]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Cliente.clientes);
+
+        }
+
+        [HttpGet]
+        public ActionResult pdf5()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Cliente.clientes.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_cliente, nombre1, nombre2, apellido1, apellido2, nit, telefono, direccion from cliente", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.Cliente.clientes.Add(new Models.Cliente((int)ingresar2[0], (string)ingresar2[1], (string)ingresar2[2], (string)ingresar2[3], (string)ingresar2[4], (string)ingresar2[5], (string)ingresar2[6], (string)ingresar2[7]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            return View(Models.Cliente.clientes);
+
+        }
+
         public ActionResult opciones_usuario()
         {
             return View();
