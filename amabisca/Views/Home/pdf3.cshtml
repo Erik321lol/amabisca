@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+@model List<Producto>
+<head>
+
+</head>
+<body>
+
+    <h2><u>Inventario</u></h2>
+
+    <div style="text-align: center">
+        <br />
+        <h3>Consulta de Inventario</h3>
+    </div>
+    <br />
+    <div style="text-align: left">
+        <h5><u>Registro de Productos en STOCK</u></h5>
+        <table border="1">
+
+            <thead>
+                <tr><td>Cod_Producto</td><td>Nombre</td><td>Estado</td><td>Marca</td><td>Cantidad</td></tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CodProducto</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Estado</td>
+                        <td>@item.Marca</td>
+                        <td>@item.Cantidad</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+</body>
+</html>
