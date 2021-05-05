@@ -80,7 +80,15 @@ namespace amabisca.Controllers
 
         public IActionResult Ventas()
         {
-            return View();
+            if (tipo.Equals("3") || tipo.Equals("2") || tipo.Equals("1"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
+            
         }
 
         [HttpPost]
@@ -95,12 +103,11 @@ namespace amabisca.Controllers
 
         public IActionResult Factura()
         {
-
             return new ViewAsPdf("Factura")
             {
-
             };
         }
+
         [HttpGet]
         public IActionResult Stock()
         {
@@ -169,7 +176,6 @@ namespace amabisca.Controllers
             {
 
             };
-
         }
 
         [HttpGet]
@@ -189,7 +195,6 @@ namespace amabisca.Controllers
             {
 
             };
-
         }
 
 
@@ -397,11 +402,15 @@ namespace amabisca.Controllers
 
         [HttpGet]
         public IActionResult Inventario(String tipoinventario)
-
         {
-          
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
                 return View();
-                
+            }
+            else
+            {
+                return View("error");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -461,7 +470,14 @@ namespace amabisca.Controllers
         
         public ActionResult cambiarcontra()
         {
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2") || tipo.Equals("3"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
         }
 
         [HttpPost]
@@ -501,6 +517,7 @@ namespace amabisca.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult eliminar(String usuario, String contraa)
         {
@@ -537,11 +554,18 @@ namespace amabisca.Controllers
 
         public ActionResult altas_bajas()
         {
-            return View();
+            if (tipo.Equals("2") || tipo.Equals("1"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+            
         }
 
         [HttpPost]
-
         public ActionResult altas_bajas(String altabaja, String codigo_producto)
         {
             String tipo = " ";
@@ -565,10 +589,15 @@ namespace amabisca.Controllers
 
         public ActionResult reportes()
         {
-            return View();
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+
         }
-
-        
-
     }
 }
