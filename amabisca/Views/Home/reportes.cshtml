@@ -25,12 +25,14 @@
     <br />
     <br />
     <form class="form-horizontal" method="post">
-        <div align="center">
-            <select name="reprotes" id="reportes">
-                <option>Ultimo articulo vendido</option>
-                <option>Articulos mas vendidos los ultimos tres días</option>
-                <option>Articulos vendidos el dia de hoy</option>
-            </select>
+        <div style="text-align: center">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="todos_productos"><button type="button" class="btn btn-success">Todos los productos disponibles</button></a>
+        </div>
+        <div style="text-align: center">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="todos_proveedores"><button type="button" class="btn btn-success">Listado de todos los proveedores de la empresa</button></a>
+        </div>
+        <div style="text-align: center">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="todos_clientes"><button type="button" class="btn btn-success">Listado de todos los clientes de la empresa</button></a>
         </div>
         <br />
         <br />
