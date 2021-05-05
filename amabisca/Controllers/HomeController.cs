@@ -599,5 +599,10 @@ namespace amabisca.Controllers
             }
 
         }
+
+        public ActionResult opciones_usuario()
+        {
+            return View();
+        }
     }
 }
