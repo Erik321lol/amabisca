@@ -90,10 +90,13 @@ namespace amabisca.Controllers
             }
 
         }
-
+        public static String coddcliente = "";
+        public static String coddusuario = "";
         [HttpPost]
         public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad, String codusuario)
         {
+            coddcliente = cod_cliente;
+            coddusuario = codusuario;
             db_a7311d_dbamabiscaContext.abrir();
             SqlCommand cons = new SqlCommand("Insert Into venta (cantidad_venta, cod_cliente, cod_producto, cod_usuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ", " + int.Parse(codusuario) + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
@@ -101,13 +104,26 @@ namespace amabisca.Controllers
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult Factura()
         {
-            return new ViewAsPdf("Factura")
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.Ventum.ventas.Clear();
+            SqlCommand cons1 = new SqlCommand("SELECT cod_venta, cantidad_venta, cod_cliente, cod_producto, cod_usuario from venta where cod_cliente = '" + coddcliente+ "' and cod_usuario = '" + coddusuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
             {
+                Models.Ventum.ventas.Add(new Models.Ventum((int)ingresar2[0], (String)ingresar2[1], (int)ingresar2[2], (int)ingresar2[3], (int)ingresar2[4]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+            
+            return new ViewAsPdf(Models.Ventum.ventas)
+            {
+
             };
         }
-
         [HttpGet]
         public IActionResult Stock()
         {

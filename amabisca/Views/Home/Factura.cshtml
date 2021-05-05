@@ -1,7 +1,9 @@
 ﻿@{
     Layout = null;
-}
 
+
+}
+@model List<Ventum>
 
 <div style="text-align: left">
     <h2>Factura Amabisca</h2>
@@ -36,18 +38,22 @@
 <br />
 <br />
 <br />
-<table style="text-align: center">
-    <thead style="text-align: center">
-        <tr style="text-align: center">
-            <th>Producto</th>
-            <th>Precio Unitario</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-        </tr>
+<table border="1">
+
+    <thead>
+        <tr><td>Cod. Venta</td><td>Cantidad</td><td>Cod. Vendedor</td><td>NIT cliente</td></tr>
+
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CodVenta</td>
+                <td>@item.CantidadVenta</td>
+                <td>@item.CodUsuario</td>
+                <td>@item.CodCliente</td>
+            </tr>
+
+        }
     </tbody>
 </table>

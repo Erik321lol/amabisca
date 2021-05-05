@@ -7,9 +7,15 @@ namespace amabisca.Models
 {
     public partial class Ventum
     {
-        public Ventum()
+        public static List<Ventum> ventas = new List<Ventum>();
+        public Ventum(int cod_venta, string cantidad, int cod_cliente, int cod_producto, int cod_usuario)
         {
             Facturas = new HashSet<Factura>();
+            CodVenta = cod_venta;
+            CantidadVenta = cantidad;
+            CodCliente = cod_cliente;
+            CodProducto = cod_producto;
+            CodUsuario = cod_usuario;
         }
 
         public int CodVenta { get; set; }
