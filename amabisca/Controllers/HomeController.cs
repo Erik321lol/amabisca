@@ -244,7 +244,7 @@ namespace amabisca.Controllers
         }
 
 
-        public static String tipo = "";
+        public static String tipo = "0";
         public static String nombre_usuario_actual = "";
         
         [HttpPost]
@@ -729,7 +729,14 @@ namespace amabisca.Controllers
 
         public ActionResult opciones_usuario()
         {
-            return View();
+            if (tipo.Equals("3") || tipo.Equals("2") || tipo.Equals("1"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         
