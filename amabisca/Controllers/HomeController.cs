@@ -21,7 +21,7 @@ namespace amabisca.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult login()
         {
             //agregar,editar,eliminar
             //db_a7311d_dbamabiscaContext.abrir();
@@ -238,7 +238,7 @@ namespace amabisca.Controllers
         }
 
 
-        public IActionResult login()
+        public IActionResult Index()
         {
             return View();
         }
@@ -246,9 +246,9 @@ namespace amabisca.Controllers
 
         public static String tipo = "";
         public static String nombre_usuario_actual = "";
-
+        
         [HttpPost]
-        public IActionResult login(String usuario, String contrasena)
+        public IActionResult Index(String usuario, String contrasena)
         {
             String estado = "";
             nombre_usuario_actual = usuario;
@@ -278,28 +278,31 @@ namespace amabisca.Controllers
                 {
                     if (tipo.Equals("1"))
                     {
-                        return View("Index");
+                        return View("login");
                     }
                     else if (tipo.Equals("2"))
                     {
-                        return View("Index");
+                        return View("login");
                     }
                     else if (tipo.Equals("3"))
                     {
+                        return View("login");
+                    }
+                    else
+                    {
                         return View("Index");
                     }
-                    return View("Index");
                 }
                 else
                 {
                     estado = "1";
                     ViewData["estado"] = estado;
-                    return View();
+                    return View("Index");
                 }
             }
             catch
             {
-                return View("login");
+                return View("Index");
             }
         }
 
