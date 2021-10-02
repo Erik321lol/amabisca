@@ -1,0 +1,62 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<amabisca.PaypalApiSetting> pSetting
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="css/normalice.css">
+    <link rel="stylesheet" href="~/css/pagosstyle.css">
+    <title>pagos</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Pagos</h2>
+            <form class="formulario">
+                <fieldset>
+                    <legend>Contactanos llenando todos los campos</legend>
+                    <div class="contenedor-campos">
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input class="input-text" type="text" placeholder="Nombre">
+                        </div>
+                        <div class="campo">
+                            <label>Telefono</label>
+                            <input class="input-text" type="tel" placeholder="Telefono">
+                        </div>
+                        <div class="campo">
+                            <label> Correo </label>
+                            <input class="input-text" type="email" placeholder="correo">
+                        </div>
+                        <div class="campo">
+                            <label> Direccion </label>
+                            <input class="input-text" type="email" placeholder="Direccion">
+                        </div>
+                        <div class="campo">
+                            <label>Indicaciones</label>
+                            <textarea class="input-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="alinear-derecha flex">
+                        <input class="boton w-100" type="submit" value="Enviar">
+                    </div>
+                    <div id="div_sbtn1" class="bro-btn1">
+
+                    </div>
+                </fieldset>
+                @section scripts
+                    {
+                    
+                    <script src="https://www.paypal.com/sdk/js?client-id=@pSetting.Value.ClientID" id="paypal_sdk"></script>
+                    <script>
+                        paypal.Buttons().render('#div_sbtn1');
+                        paypal.Buttons().render('#div_sbtn2');
+                        paypal.Buttons().render('#div_sbtn3');
+                    </script>
+                    }
+            </form>
+            
+        </section>
+        
+    </main>
+    
+</body>
+</html>

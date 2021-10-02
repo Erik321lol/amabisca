@@ -4,67 +4,57 @@
     ViewData["Title"] = "Proveedores";
 }
 
-<h2><u><strong>Proveedores</strong></u></h2>
 
 <html>
 <head>
-    <style>
-        body {
-            background: url(../Imagenes/index/fondo.jpg);
-            padding: 2px 20px 2px 20px;
-            font-family: 'Oswald', sans-serif;
-        }
-    </style>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/normalice.css">
+    <link rel="stylesheet" href="~/css/proveedoresstyle.css">
 </head>
 <body>
+    <div style="text-align: center">
+        <h3><strong>Registro de Proveedores</strong></h3>
+    </div>
 
+    <form class="form-horizontal contenedor sombra" method="post">
+        <div class="contenedor-campos servicios">
+            <div class="form-group campo">
+                <label for="nombre_producto" class="col-sm-5 control-label"><strong>Nombre</strong></label>
+                <div class="col-sm-12">
+                    <input type="text" name="nombre" class="form-control" id="nombre_producto" placeholder="nombre" required>
+                </div>
+            </div>
+            <div class="form-group campo">
+                <label for="cantidad" class="col-sm-5 control-label"><strong>Telefono</strong></label>
+                <div class="col-sm-12">
+                    <input type="text" name="telefono" class="form-control" id="cantidad" placeholder="# telefono" required>
+                </div>
+            </div>
+            <div class="form-group campo">
+                <label for="cantidad" class="col-sm-5 control-label"><strong>Direccion</strong></label>
+                <div class="col-sm-12">
+                    <input type="text" name="direccion" class="form-control" id="cantidad" placeholder="direccion" required>
+                </div>
+            </div>
+            <div class="form-group campo">
+                <label for="cantidad" class="col-sm-5 control-label"><strong>Ciudad</strong></label>
+                <div class="col-sm-12">
+                    <input type="text" name="ciudad" class="form-control" id="cantidad" placeholder="ciudad" required>
+                </div>
+            </div>
+            <div class="form-group campo">
+                <label for="cantidad" class="col-sm-5 control-label"><strong>Pais</strong></label>
+                <div class="col-sm-12">
+                    <input type="text" name="pais" class="form-control" id="cantidad" placeholder="pais" required>
+                </div>
+            </div>
+            <br />
+            <div style="text-align: center">
+                <button type="submit" class="btn btn-success">Registrar</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
 
-
-<div style="text-align: center">
-    <br />
-    <h3><strong>Registro de Proveedores</strong></h3>
-</div>
-
-<form class="form-horizontal" method="post">
-    <br />
-
-
-    
-    <div class="form-group">
-        <label for="nombre_producto" class="col-sm-5 control-label"><strong>Nombre</strong></label>
-        <div class="col-sm-5">
-            <input type="text" name="nombre" class="form-control" id="nombre_producto" placeholder="nombre" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label"><strong>Telefono</strong></label>
-        <div class="col-sm-5">
-            <input type="text" name="telefono" class="form-control" id="cantidad" placeholder="# telefono" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label"><strong>Direccion</strong></label>
-        <div class="col-sm-5">
-            <input type="text" name="direccion" class="form-control" id="cantidad" placeholder="direccion" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label"><strong>Ciudad</strong></label>
-        <div class="col-sm-5">
-            <input type="text" name="ciudad" class="form-control" id="cantidad" placeholder="ciudad" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="cantidad" class="col-sm-2 control-label"><strong>Pais</strong></label>
-        <div class="col-sm-5">
-            <input type="text" name="pais" class="form-control" id="cantidad" placeholder="pais" required>
-        </div>
-    </div>
-    <br />
-    <div style="text-align: center">
-        <button type="submit" class="btn btn-success">Registrar</button>
-    </div>
-</form>
 

@@ -1,0 +1,162 @@
+﻿:root {
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrrafos: 'Open Sans', sans-serif;
+    --primario: #784D3C;
+    --gris: #e1e1e1;
+    --blanco: #ffffffff;
+    --negro: #00000000;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1 rem = 10px*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--fuenteParrrafos);
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/** Globales **/
+
+.contenedor {
+    width: 90%, 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* utilidades */
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+body {
+}
+
+/*contacto*/
+.contenedor{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2rem;
+}
+
+@media(min-width: 768px) {
+    .bloques {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+/*header*/
+
+.header {
+    background-image: url(/Imagenes/index/img3.jpg);
+}
+
+/*boton*/
+.boton{
+    display: block;
+    font-family: var(--fuenteHeading);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border: solid;
+
+}
+
+.boton--primario {
+    background-color: var(--primario);
+}
+
+.fondo{
+    width: 100%;
+}
+
+.hero {
+    background-image: url(/Imagenes/index/fondo.jpg);
+    background-repeat: no-repeat;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .4); /**anterior**/
+    background-color: rgb( 0 0 0 /70%);
+    width: 100%;
+    height: 100%;
+    display: flex; /**se puede utilizar para alinear vertical y horizontlamente**/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+

@@ -1,0 +1,158 @@
+﻿:root {
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrrafos: 'Open Sans', sans-serif;
+    --primario: #784D3C;
+    --gris: #e1e1e1;
+    --blanco: #ffffffff;
+    --negro: #00000000;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1 rem = 10px*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--fuenteParrrafos);
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/** Globales **/
+
+.contenedor {
+    width: 90%, 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+label {
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* utilidades */
+body {
+    background: url(../Imagenes/index/fondo.jpg);
+    padding: 2px 20px 2px 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.formulario {
+    background-color: var(--gris);
+    width: 60rem, 100%; /* utilizar el valor mas pequenio*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+    .formulario fieldset {
+        border: none;
+    }
+
+    .formulario legend {
+        text-align: center;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: var(--primario)
+    }
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+
+.campo label {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 50%
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.label {
+    color: black;
+}
+
+.input-text {
+    width: 200%;
+    border: groove;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.boton {
+    display: block;
+    font-family: var(--fuenteHeading);
+    color: black;
+    text-align: center;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid;
+}
+
+.boton--primario {
+    background-color: var(--primario);
+}
+
+.texto {
+    width: 200%;
+}

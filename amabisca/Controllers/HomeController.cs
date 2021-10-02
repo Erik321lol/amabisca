@@ -54,6 +54,10 @@ namespace amabisca.Controllers
             }
 
         }
+        public IActionResult pagos()
+        {
+            return View();
+        }
 
         public IActionResult Proveedores()
         {
@@ -244,7 +248,7 @@ namespace amabisca.Controllers
         }
 
 
-        public static String tipo = "0";
+        public static String tipo = "1";
         public static String nombre_usuario_actual = "";
         
         [HttpPost]
