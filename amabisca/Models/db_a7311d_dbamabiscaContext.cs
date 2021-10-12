@@ -34,11 +34,11 @@ namespace amabisca.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data source = sql5104.site4now.net; Initial catalog = db_a7311d_dbamabisca; user id = db_a7311d_dbamabisca_admin; password = 12345678amabisca;");
+                optionsBuilder.UseSqlServer("Data source = SQL5108.site4now.net; Initial catalog = db_a7a914_dbamabisca; user id = db_a7a914_dbamabisca_admin; password = IngenierO22;");
             }
         }
 
-        public static string dda = "Data source = sql5104.site4now.net; Initial catalog = db_a7311d_dbamabisca; user id = db_a7311d_dbamabisca_admin; password = 12345678amabisca;";
+        public static string dda = "Data Source=SQL5108.site4now.net;Initial Catalog=db_a7a914_dbamabisca;User Id=db_a7a914_dbamabisca_admin; password = IngenierO22;";
         public static SqlConnection con = new SqlConnection(dda);
        
         public static void abrir()
@@ -49,9 +49,10 @@ namespace amabisca.Models
             }
             catch
             {
-
+                Console.WriteLine("no funca");
+                
             }
-            
+
         }
 
         public static void cerrar()

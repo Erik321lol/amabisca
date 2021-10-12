@@ -259,11 +259,11 @@ namespace amabisca.Controllers
             try {
                 String contra = "";
                 db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons = new SqlCommand("Select contraseña from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons = new SqlCommand("Select contrasena from usuario where usuario = '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
                 SqlDataReader ingresar = cons.ExecuteReader();
                 while (ingresar.Read())
                 {
-                    contra = ingresar["contraseña"].ToString();
+                    contra = ingresar["contrasena"].ToString();
                 }
                 db_a7311d_dbamabiscaContext.cerrar();
 
