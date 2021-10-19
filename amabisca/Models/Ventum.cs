@@ -23,6 +23,7 @@ namespace amabisca.Models
         public int CodCliente { get; set; }
         public int CodProducto { get; set; }
         public int CodUsuario { get; set; }
+        public int Cod_transaccion { get; set; }
 
         public virtual Cliente CodClienteNavigation { get; set; }
         public virtual Producto CodProductoNavigation { get; set; }

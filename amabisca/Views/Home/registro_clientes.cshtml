@@ -1,76 +1,60 @@
 ﻿<html>
 <head>
-    <title>Inicio</title>
-    <link rel="stylesheet" href="css/normalice.css">
-    <link rel="stylesheet" href="~/css/registroclientesstyle.css">
+
 </head>
-<body>
+<body style="background-color: #EEEEEE;">
+
+
+    <h2><u>Registro de clientes</u></h2>
+
     <div style="text-align: center">
-        <h2><strong>Registro de clientes</strong></h2>
+        <br />
+        <h3>Registro de clientes</h3>
     </div>
-    <section class="">
-        <form class="form-horizontal contenedor sombra" method="post">
-            <div class="contenedor-campos servicios">
-                <div class="form-group campo">
-                    <label for="nombre" class="col-sm-5"><strong>Nombre 1</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="nombre1" class="form-control" id="nombre1" placeholder="Nombre 1" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="nombre" class="col-sm-5 control-label"><strong>Nombre 2</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="nombre2" class="form-control" id="nombre2" placeholder="Nombre 2" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="nombre" class="col-sm-5 control-label"><strong>Nombre 3</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="nombre3" class="form-control" id="nombre3" placeholder="Nombre 3" />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="nombre" class="col-sm-5 control-label"><strong>Apellido 1</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Apellido 1" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="nombre" class="col-sm-5 control-label"><strong>Apellido 2</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Apellido 2" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="nit" class="col-sm-5 control-label"><strong>NIT</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="nit" class="form-control" id="nit" placeholder="NIT" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="telefono" class="col-sm-5 control-label"><strong>Telefono</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Telefono" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="direccion" class="col-sm-5 control-label"><strong>Direccion</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Direccion" required />
-                    </div>
-                </div>
-                <div class="form-group campo">
-                    <label for="dpi" class="col-sm-5 control-label"><strong>DPI</strong></label>
-                    <div class="col-sm-12">
-                        <input type="text" name="dpi" class="form-control" id="dpi" placeholder="DPI" required />
-                    </div>
-                </div>
-                <br />
+
+    <br />
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Nombre completo</label>
+            <div class="col-sm-5">
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" />
             </div>
-            <div style="text-align: center">
-                <button type="submit" class="btn btn-success"><strong>Registrar</strong></button>
+        </div>
+        <div class="form-group">
+            <label for="direccion" class="col-sm-5 control-label">Direccion</label>
+            <div class="col-sm-5">
+                <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Direccion" />
             </div>
-        </form>
-    </section>
+        </div>
+        <div class="form-group">
+            <label for="dpi" class="col-sm-5 control-label">DPI</label>
+            <div class="col-sm-5">
+                <input type="text" name="dpi" class="form-control" id="dpi" placeholder="DPI" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cod_cliente" class="col-sm-5 control-label">Cod_cliente</label>
+            <div class="col-sm-5">
+                <input type="text" name="cod_cliente" class="form-control" id="cod_cliente" placeholder="Cod_cliente" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nit" class="col-sm-5 control-label">NIT</label>
+            <div class="col-sm-5">
+                <input type="text" name="nit" class="form-control" id="nit" placeholder="NIT" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefono" class="col-sm-5 control-label">Telefono</label>
+            <div class="col-sm-5">
+                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Telefono" />
+            </div>
+        </div>
+        <br />
+        <div style="text-align: center">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+    </form>
 </body>
 </html>

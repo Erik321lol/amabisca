@@ -6,19 +6,15 @@
 
 <html>
 <head>
-    <style>
-        body {
-            background: url(../Imagenes/index/fondo.jpg);
-            padding: 2px 20px 2px 20px;
-            font-family: 'Oswald', sans-serif;
-        }
-    </style>
-
+    <script src="https://www.paypal.com/sdk/js?client-id=Ad-r-3q87Oo8a1CApnBI0gZds2CGy9jlhr2wcdAg-C0D62lIv_IJgn_vgzimjzFPbKpZYNpQdzdvn7Dk&currency=USD">
+    </script>
 </head>
-<body>
+<body style="background-color: #EEEEEE;">
     <div style="float: right">
         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Factura"><img src="https://www.gasmart.mx/wp-content/uploads/2017/12/Factura_01-400x400.png" width="100" height="100"></a>
         <label>Generar Factura</label>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="facturaimpr"><img src="https://image.flaticon.com/icons/svg/2649/2649147.svg" width="100" height="100"></a>
+        <label>Generar guia del pedido</label>
     </div>
 
     <h2><u><strong>Ventas</strong></u></h2>
@@ -57,9 +53,45 @@
         </div>
         <br />
         <br />
+
         <div style="text-align: center">
             <button type="submit" class="btn btn-success">Registrar</button>
         </div>
+
+        <br />
+        <br />
+
+        <div id="paypal-button-conteiner" style="text-align: center"></div>
+        <script>
+        paypal.Buttons({
+            style:{
+                color: 'blue',
+                shape: 'pill',
+                label: 'pay'
+            },
+
+            createOrder: function (data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '@ViewBag.tota'
+                        }
+                    }]
+                });
+            },
+            onCancel: function (data) {
+                alert("pago cancelado")
+            },
+            onApprove: function (data, actions) {
+                actions.order.capture().then(function (detalles) {
+                    console.log(detalles)
+                });
+            }
+        }).render('#paypal-button-conteiner');
+        </script>
+        <br />
+        <br />
 
     </form>
 </body>

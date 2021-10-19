@@ -1,0 +1,28 @@
+﻿<html>
+@model List<Producto>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script> src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"</script>
+</head>
+<body>
+
+    <canvas id="grafica" width="400" height="300"></canvas>
+</body>
+
+
+</html>
+
+<script>
+    let miCanvas = document.getElementById("grafica").getContext("2d");
+    var myChart = new Chart(miCanvas, {
+        type: "bar",
+        data: {
+            labels['col1', 'col2', 'col3'],
+            datasets: [{
+                label 'datos'
+                        data: [10, 9, 15]
+                    }]
+        }
+    }
+    )
+</script>

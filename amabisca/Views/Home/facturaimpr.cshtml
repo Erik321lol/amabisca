@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+
+
+}
+@model List<pedido>
+
+<div style="text-align: left">
+    <h2>Factura Amabisca</h2>
+</div>
+
+<div style="float: left">
+    <p><h3>Amabisca</h3></p>
+    <p>NIT:17000000</p>
+    <p>Calle Rio de Janeiro</p>
+    <p>Coban, Alta Verapaz</p>
+    <p>Guatemala</p>
+    <p>Tel: 79536214 | Fax: 97656432</p>
+    <p>amabisca@gmail.com</p>
+</div>
+
+<br />
+<br />
+<div style="float: right">
+    <p><h2>FACTURA</h2></p>
+    <p>No. de Factura: </p>
+    <p>Fecha: @DateTime.Now.ToShortDateString()</p>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<table border="1">
+
+    <thead>
+        <tr><td>direccion </td><td>telefono</td><td>nit</td><td>monto</td><td>cod_producto</td></tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.direccion</td>
+            <td>@item.telefono</td>
+            <td>@item.nit</td>
+            <td>@item.monto</td>
+            <td>@item.cod_producto</td>
+        </tr>
+
+        }
+    </tbody>
+</table>

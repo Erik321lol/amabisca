@@ -42,6 +42,18 @@ namespace amabisca.Controllers
             return View();
         }
 
+        public IActionResult facturarpedido()
+        {
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+        }
+
         public IActionResult Privacy()
         {
             if (tipo.Equals("1") || tipo.Equals("2"))
@@ -56,10 +68,26 @@ namespace amabisca.Controllers
         }
         public IActionResult pagos()
         {
+            /*ViewData["Cabecera"] = "total";
+            ViewData["total"] = */
+            
             return View();
+
         }
 
         public IActionResult Proveedores()
+        {
+            if (tipo.Equals("1") || tipo.Equals("2"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("error");
+            }
+        }
+
+        public IActionResult graficastock()
         {
             if (tipo.Equals("1") || tipo.Equals("2"))
             {
@@ -94,21 +122,38 @@ namespace amabisca.Controllers
             }
 
         }
+
         public static String coddcliente = "";
         public static String coddusuario = "";
+        public static double tot = 0;
         [HttpPost]
         public ActionResult Ventas(String cod_producto, String cod_cliente, String cantidad, String codusuario)
         {
             coddcliente = cod_cliente;
             coddusuario = codusuario;
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons = new SqlCommand("Insert Into venta (cantidad_venta, cod_cliente, cod_producto, cod_usuario) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ", " + int.Parse(codusuario) + ")", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons = new SqlCommand("Insert Into venta (cantidad_venta, cod_cliente, cod_producto, cod_usuario, cod_transaccion) values ('" + cantidad + "', " + int.Parse(cod_cliente) + ", " + int.Parse(cod_producto) + ", " + int.Parse(codusuario) + "," + 1 + ")", db_a7311d_dbamabiscaContext.con);
             cons.ExecuteNonQuery();
             db_a7311d_dbamabiscaContext.cerrar();
+
+            db_a7311d_dbamabiscaContext.abrir();
+            SqlCommand cons1 = new SqlCommand("SELECT precio from producto where cod_producto = " + int.Parse(cod_producto), db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                tot += (double)ingresar2["precio"];
+            }
+            tot = tot * int.Parse(cantidad);
+            db_a7311d_dbamabiscaContext.cerrar();
+
+            ViewBag.tota = tot;
+
             return View();
         }
 
 
+       
         [HttpGet]
         public IActionResult Factura()
         {
@@ -128,6 +173,7 @@ namespace amabisca.Controllers
 
             };
         }
+
         [HttpGet]
         public IActionResult Stock()
         {
@@ -178,6 +224,27 @@ namespace amabisca.Controllers
         //    return View(Models.Producto.invent);
 
         //}
+
+        [HttpGet]
+        public IActionResult facturaimpr()
+        {
+            db_a7311d_dbamabiscaContext.abrir();
+            Models.pedido.invent.Clear();
+            SqlCommand cons1 = new SqlCommand("Select direccion, telefono, nit, monto, cod_producto from pedido where cod_pedido = (SELECT max(cod_pedido) FROM pedido);", db_a7311d_dbamabiscaContext.con);
+            SqlDataReader ingresar2 = cons1.ExecuteReader();
+
+            while (ingresar2.Read())
+            {
+                Models.pedido.invent.Add(new Models.pedido((String)ingresar2[0], (String)ingresar2[1], (String)ingresar2[2], (int)ingresar2[3], (int)ingresar2[4]));
+            }
+            db_a7311d_dbamabiscaContext.cerrar();
+
+            return new ViewAsPdf(Models.pedido.invent)
+            {
+
+            };
+        }
+
 
         [HttpGet]
         public IActionResult Pdf()
@@ -380,27 +447,27 @@ namespace amabisca.Controllers
             }
             else if (unidadmedida.Equals("Diametro"))
             {
-                unidad = 5;
+                unidad = 6;
             }
             else if (unidadmedida.Equals("Altura"))
             {
-                unidad = 6;
+                unidad = 7;
             }
             else if (unidadmedida.Equals("Ancho"))
             {
-                unidad = 7;
+                unidad = 8;
             }
             else if (unidadmedida.Equals("Espesor"))
             {
-                unidad = 8;
+                unidad = 9;
             }
             else if (unidadmedida.Equals("Peso"))
             {
-                unidad = 9;
+                unidad = 10;
             }
             else if (unidadmedida.Equals("Rosca"))
             {
-                unidad = 10;
+                unidad = 11;
             }
 
             db_a7311d_dbamabiscaContext.abrir();
@@ -478,7 +545,7 @@ namespace amabisca.Controllers
                     }
                     //agregar,editar,eliminar
                     db_a7311d_dbamabiscaContext.abrir();
-                    SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contraseña, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo1 + ")", db_a7311d_dbamabiscaContext.con);
+                    SqlCommand cons = new SqlCommand("Insert Into usuario(Nombre1, Nombre2, Nombre3, Apellido1, Apellido2, dpi, usuario, Contrasena, cod_rol_usuario) values ('" + nombre1 + "', '" + nombre2 + "', '" + nombre3 + "', '" + apellido1 + "', '" + apellido2 + "', " + int.Parse(dpi) + ", '" + usuario + "', '" + contrasena + "', " + tipo1 + ")", db_a7311d_dbamabiscaContext.con);
                     cons.ExecuteNonQuery();
                     db_a7311d_dbamabiscaContext.cerrar();
                     return View("popup");
@@ -507,18 +574,18 @@ namespace amabisca.Controllers
         {
             String contra = "";
             db_a7311d_dbamabiscaContext.abrir();
-            SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons1 = new SqlCommand("Select contrasena from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar1 = cons1.ExecuteReader();
 
             while (ingresar1.Read())
             {
-                contra = ingresar1["contraseña"].ToString();
+                contra = ingresar1["contrasena"].ToString();
             }
             db_a7311d_dbamabiscaContext.cerrar();
             if (contra == contraa)
             {
                 db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons = new SqlCommand("UPDATE usuario SET contraseña =" + contran + "WHERE usuario = '" + usuario + "';", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons = new SqlCommand("UPDATE usuario SET contrasena =" + contran + "WHERE usuario = '" + usuario + "';", db_a7311d_dbamabiscaContext.con);
                 cons.ExecuteNonQuery();
                 db_a7311d_dbamabiscaContext.cerrar();
                 return View("popup");
@@ -555,11 +622,11 @@ namespace amabisca.Controllers
             {
 
                 db_a7311d_dbamabiscaContext.abrir();
-                SqlCommand cons1 = new SqlCommand("Select contraseña from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
+                SqlCommand cons1 = new SqlCommand("Select contrasena from usuario where usuario= '" + usuario + "'", db_a7311d_dbamabiscaContext.con);
                 SqlDataReader ingresar1 = cons1.ExecuteReader();
                 while (ingresar1.Read())
                 {
-                    contra = ingresar1["contraseña"].ToString();
+                    contra = ingresar1["contrasena"].ToString();
                 }
 
                 db_a7311d_dbamabiscaContext.cerrar();

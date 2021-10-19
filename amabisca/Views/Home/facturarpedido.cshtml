@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Ventas";
+}
+
+
+<html>
+<head>
+</head>
+<body style="background-color: #EEEEEE;">
+
+    <h2><u><strong>Factura pedido</strong></u></h2>
+
+    <div style="text-align: center">
+        <h3><strong>Facturar pedido</strong></h3>
+    </div>
+    <br />
+    <br />
+
+    <form class="form-group" method="post">
+
+        <div class="form-group">
+            <label for="cod_pedido" class="col-sm-5 control-label"><strong>Codigo Pedido</strong></label>
+            <div class="col-sm-5">
+                <input type="text" name="cod" class="form-control" id="cod" placeholder="Codigo Del pedido" required>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div style="text-align: center">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="facturaimpr"><strong><button type="submit" class="btn btn-success" id="registrar">Facturar</button></strong></a>
+</div>
+
+    </form>
+</body>
+</html>

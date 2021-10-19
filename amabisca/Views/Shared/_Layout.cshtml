@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <style type="text/css">
+       
+        .color{
+            background-color: black;
+            color: white;
+        }
         .nuevo1 {
             position: relative;
             left: 800px;
@@ -18,7 +23,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light color border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="login">AMABISCA</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="login">AMABISCA</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,31 +31,31 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="registro_clientes">Registro de clientes</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="registro_clientes">Registro de clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Proveedores">Proveedores</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Proveedores">Proveedores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Ventas">Ventas</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Ventas">Ventas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Productos">Productos</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Productos">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Inventario">Inventario</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Inventario">Inventario</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="altas_bajas">Altas y Bajas</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="altas_bajas">Altas y Bajas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="reportes">Reportes</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="reportes">Reportes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="opciones_usuario">Usuarios</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="opciones_usuario">Usuarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>
                         </li>
                     </ul>
                 </div>
@@ -65,8 +70,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top color footer text-muted">
+        <div class="container text-white">
             &copy; 2021 - amabisca - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
