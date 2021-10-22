@@ -230,12 +230,12 @@ namespace amabisca.Controllers
         {
             db_a7311d_dbamabiscaContext.abrir();
             Models.pedido.invent.Clear();
-            SqlCommand cons1 = new SqlCommand("Select direccion, telefono, nit, monto, cod_producto from pedido where cod_pedido = (SELECT max(cod_pedido) FROM pedido);", db_a7311d_dbamabiscaContext.con);
+            SqlCommand cons1 = new SqlCommand("Select cod_pedido, direccion, telefono, nit, monto, cod_producto from pedido where cod_pedido = (SELECT max(cod_pedido) FROM pedido);", db_a7311d_dbamabiscaContext.con);
             SqlDataReader ingresar2 = cons1.ExecuteReader();
 
             while (ingresar2.Read())
             {
-                Models.pedido.invent.Add(new Models.pedido((String)ingresar2[0], (String)ingresar2[1], (String)ingresar2[2], (int)ingresar2[3], (int)ingresar2[4]));
+                Models.pedido.invent.Add(new Models.pedido((int)ingresar2[0], (String)ingresar2[1], (String)ingresar2[2], (String)ingresar2[3], (int)ingresar2[4], (int)ingresar2[5]));
             }
             db_a7311d_dbamabiscaContext.cerrar();
 

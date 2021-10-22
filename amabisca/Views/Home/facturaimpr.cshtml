@@ -41,13 +41,14 @@
 <table border="1">
 
     <thead>
-        <tr><td>direccion </td><td>telefono</td><td>nit</td><td>monto</td><td>cod_producto</td></tr>
+        <tr><td>Codigo pedido </td><td>direccion </td><td>telefono</td><td>nit</td><td>monto</td><td>cod_producto</td></tr>
 
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
+            <td>@item.cod_pedido</td>
             <td>@item.direccion</td>
             <td>@item.telefono</td>
             <td>@item.nit</td>

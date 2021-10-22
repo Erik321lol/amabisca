@@ -11,10 +11,11 @@ namespace amabisca.Models
 
         public static List<pedido> invent = new List<pedido>();
         public pedido(object v) { }
-        public pedido(String direccion1, String telefono1, String nit1, int monto1, int cod_producto1)
+        public pedido(int cod_pedido1, String direccion1, String telefono1, String nit1, int monto1, int cod_producto1)
         {
             Inventarios = new HashSet<Inventario>();
             Venta = new HashSet<Ventum>();
+            cod_pedido = cod_pedido1;
             direccion = direccion1;
             telefono = telefono1;
             nit = nit1;
